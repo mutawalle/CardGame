@@ -2,6 +2,8 @@
 #ifndef PLAYERCARD_HPP
 #define PLAYERCARD_HPP
 
+#include "inventoryHolder.hpp"
+
 class PlayerCard: InventoryHolder {
 
 };
