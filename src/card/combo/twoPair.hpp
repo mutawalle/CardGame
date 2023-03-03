@@ -9,7 +9,7 @@ class twoPair :public AbstractValue {
         twoPair(vector<Card> cards){
             this->cards=cards;
         }
-        double getValue(){
+        double getValue() const override{
             int number=0;
             int color_number=0;
             for(int i=0;i<cards.size();i++){

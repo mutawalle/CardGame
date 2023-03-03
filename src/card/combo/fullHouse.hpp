@@ -9,7 +9,7 @@ class fullHouse :public AbstractValue {
         fullHouse(vector<Card> cards){
             this->cards=cards;
         }
-        double getValue(){
+        double getValue() const override{
             int highest_number=0;
             for(int i=0;i<cards.size();i++){
                 if(highest_number<cards[i].getNumber()){
