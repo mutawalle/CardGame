@@ -4,10 +4,11 @@
 
 #include "abstractValue.hpp"
 #include <string>
+#include <iostream>
 
 using namespace std;
 
-class Card : AbstractValue {
+class Card : public AbstractValue {
 
     private:
         int number;
@@ -23,6 +24,7 @@ class Card : AbstractValue {
         double getValue() const override;
         int getNumber() const;
         string getColor() const;
+        friend ostream& operator<<(ostream& os, const Card& obj);
 };
 
 #endif

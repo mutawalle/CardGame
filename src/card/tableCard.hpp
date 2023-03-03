@@ -1,6 +1,6 @@
 // turunan dari InentoryHolder berupa list of card/vector of card
-#ifndef PLAYERCARD_HPP
-#define PLAYERCARD_HPP
+#ifndef TABLECARD_HPP
+#define TABLECARD_HPP
 
 #include "inventoryHolder.hpp"
 #include "card.hpp"
