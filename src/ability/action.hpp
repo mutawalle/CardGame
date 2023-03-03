@@ -12,10 +12,10 @@ public:
     Action (GameState gameState) {
         Action::gameState = gameState;
     }
-    static GameState GetVec() {
+    static GameState GetGameState() {
         return gameState;
     }
-    static void SetVec(GameState other) {
+    static void SetGameState(GameState other) {
         Action::gameState = other;
     }
     virtual void DoAction() = 0;

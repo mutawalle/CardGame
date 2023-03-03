@@ -11,7 +11,10 @@ public:
     Half() {}
     Half (GameState gameState) : Action(gameState) {}
     void DoAction() {
-        cout << "Half" << endl;
+        // int point = gameState.GetPoint();
+        // gameState.SetPoint(point / 2);
+        // int index = gameState.GetIndex();
+        // gameState.SetIndex(index + 1);
     }
 };
 

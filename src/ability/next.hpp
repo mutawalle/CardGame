@@ -12,7 +12,8 @@ public:
     Next() {}
     Next (GameState gameState) : Action(gameState) {}
     void DoAction() {
-        cout << "Next" << endl;
+        // int index = gameState.GetIndex();
+        // gameState.SetIndex(index + 1);
     }
 };
 

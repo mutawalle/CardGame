@@ -13,6 +13,7 @@ public:
     Switch (GameState gameState) : Action(gameState) {}
     void DoAction() {
         cout << "Switch" << endl;
+        
     }
 };
 

@@ -12,7 +12,10 @@ public:
     SwapCard() {}
     SwapCard (GameState gameState) : Action(gameState) {}
     void DoAction() {
-        cout << "SwapCard" << endl;
+        cout << "masukan pemain yang ingin ditukar kartunya: ";
+        int player;
+        cin >> player;
+        
     }
 };
 
