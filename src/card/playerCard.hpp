@@ -5,6 +5,7 @@
 #include "inventoryHolder.hpp"
 #include "card.hpp"
 #include <vector>
+#include <algorithm>
 
 class PlayerCard: public InventoryHolder {
 

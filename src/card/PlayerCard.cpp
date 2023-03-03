@@ -29,4 +29,16 @@ void PlayerCard::addCard(Card c) {
 
 InventoryHolder& PlayerCard::operator+(const Card& other) const {
     PlayerCard *a = new PlayerCard(*this);
+    a->addCard(other);
+    return *a;
+}
+
+InventoryHolder& PlayerCard::operator-(const Card& other) const {
+    PlayerCard *a = new PlayerCard(*this);
+    vector<Card>::iterator itr;
+    itr = find((a->getCard()).begin(), (a->getCard()).end(), other);
+    if (itr != (a->getCard()).end()) {
+        (a->cardList).erase(itr);
+    }
+    return *a;
 }
