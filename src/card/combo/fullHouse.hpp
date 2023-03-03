@@ -2,23 +2,23 @@
 #include "../card.hpp"
 #include <vector>
 
-class doublePair :public AbstractValue {
+class fullHouse :public AbstractValue {
     private:
         vector<Card> cards;
     public:
-        doublePair(vector<Card> cards){
+        fullHouse(vector<Card> cards){
             this->cards=cards;
         }
         double getValue() const override{
-            int number=0;
-            int number_color=0;
+            int highest_number=0;
             for(int i=0;i<cards.size();i++){
-                if(number<cards[i].getNumber()){
-                    number=cards[i].getNumber();
+                if(highest_number<cards[i].getNumber()){
+                    highest_number=cards[i].getNumber();
                 }
             }
+            int color_number=0;
             for(int i=0;i<cards.size();i++){
-                if(number==cards[i].getNumber()){
+                if(highest_number==cards[i].getNumber()){
                     int temp_color=0;
                     if(cards[i].getColor()=="Hijau"){
                         temp_color=1;
@@ -32,11 +32,12 @@ class doublePair :public AbstractValue {
                     if(cards[i].getColor()=="Merah"){
                         temp_color=4;
                     }
-                    if(number_color<temp_color){
-                        number_color=temp_color;
+                    if(color_number<temp_color){
+                        color_number=temp_color;
                     }
                 }
             }
-            return 2.7+number*0.1+number_color*0.03;
+            
+            return 7.9+(highest_number-1)*0.1+color_number*0.03;
         };
 };
