@@ -4,21 +4,21 @@
 
 class AbstractValue{
     public:
-        virtual double value() const = 0;
+        virtual double getValue() const = 0;
         bool operator>(const AbstractValue& other) {
-            return this->value() > other.value();
+            return this->getValue() > other.getValue();
         }
         bool operator<(const AbstractValue& other) {
-            return this->value() < other.value();
+            return this->getValue() < other.getValue();
         }
         bool operator<=(const AbstractValue& other) {
-            return this->value() <= other.value();
+            return this->getValue() <= other.getValue();
         }
         bool operator>=(const AbstractValue& other) {
-            return this->value() >= other.value();
+            return this->getValue() >= other.getValue();
         }
         bool operator==(const AbstractValue& other) {
-            return this->value() == other.value();
+            return this->getValue() == other.getValue();
         }
 };
 

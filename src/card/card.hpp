@@ -3,13 +3,24 @@
 #define CARD_HPP
 
 #include "abstractValue.hpp"
+#include <string>
+
+using namespace std;
 
 class Card : AbstractValue {
-    private:
-        // number (int)
-        // color (string) 
-    public:
-        // override value()
+
+private:
+    int number;
+    string color;
+    double value;
+
+public:
+    Card();
+    Card(int, string, double);
+    Card(const Card&);
+    Card& operator=(const Card& other)
+    ~Card();
+    double getValue();
 };
 
 #endif
