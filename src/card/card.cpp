@@ -27,6 +27,10 @@ Card& Card::operator=(const Card& other) {
 Card::~Card() {
 }
 
-double Card::getValue() {
+double Card::getValue() const  {
     return this->value;
+}
+
+int Card::getNumber() const {
+    return this->number;
 }

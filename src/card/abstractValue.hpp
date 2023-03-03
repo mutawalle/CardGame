@@ -2,7 +2,7 @@
 #define ABSTRACTVALUE_HPP
 // class abstrack memiliki value() virtual
 
-class AbstractValue{
+class AbstractValue {
     public:
         virtual double getValue() const = 0;
         bool operator>(const AbstractValue& other) {

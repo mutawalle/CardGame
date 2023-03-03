@@ -3,9 +3,21 @@
 #define PLAYERCARD_HPP
 
 #include "inventoryHolder.hpp"
+#include "card.hpp"
+#include <vector>
 
-class PlayerCard: InventoryHolder {
+class PlayerCard: public InventoryHolder {
 
+    private:
+        vector<Card> cardList;
+
+    public:
+        PlayerCard();
+        PlayerCard(vector<Card>);
+        PlayerCard(const PlayerCard&);
+        ~PlayerCard();
+        void setCard(vector<Card>);
+        vector<Card> getCard();
 };
 
 #endif
