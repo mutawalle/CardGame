@@ -1,7 +1,17 @@
 #include "deckCard.hpp"
 
+const int colorSize = 4;
+const string colorList[colorSize] = {"Hijau", "Biru", "Kuning", "Merah"};
+
 DeckCard::DeckCard() {
     this->cardList = {};
+    for (int i = 1; i < 14; i++) {
+        for (int j = 0; j < colorSize; j++) {
+            double curValue = ((double) i / 10) + ((double) j * 3 / 100);
+            Card temp(i, colorList[j], curValue);
+            this->addCard(temp);
+        }
+    }
 }
 
 DeckCard::DeckCard(vector<Card> cl) {
@@ -41,4 +51,18 @@ InventoryHolder& DeckCard::operator-(const Card& other) const {
         (a->cardList).erase(itr);
     }
     return *a;
+}
+
+ostream& operator<<(ostream& os, const DeckCard& dc) {
+    if (dc.cardList.size() == 0) {
+        os << "Card is empty";
+    } else {
+        for (int i = 0; i < dc.cardList.size(); i++) {
+            if (i != 0) {
+                os << " ";
+            }
+            os << (dc.cardList).at(i);
+        }
+    }
+    return os;
 }

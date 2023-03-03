@@ -22,6 +22,7 @@ Card& Card::operator=(const Card& other) {
     this->number = other.number;
     this->color = other.color;
     this->value = other.value;
+    return *this;
 }
 
 Card::~Card() {
@@ -37,4 +38,9 @@ int Card::getNumber() const {
 
 string Card::getColor() const {
     return this->color;
+}
+
+ostream& operator<<(ostream& os, const Card& obj) {
+    os << "{" << obj.getNumber() << " " << obj.getColor() << " " << obj.getValue() << "}";
+    return os;
 }
