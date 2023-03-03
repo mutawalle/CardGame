@@ -5,19 +5,24 @@
 #include "inventoryHolder.hpp"
 #include "card.hpp"
 #include <vector>
+#include <algorithm>
 
-class PlayerCard: public InventoryHolder {
+class DeckCard: public InventoryHolder {
 
     private:
         vector<Card> cardList;
 
     public:
-        PlayerCard();
-        PlayerCard(vector<Card>);
-        PlayerCard(const PlayerCard&);
-        ~PlayerCard();
+        DeckCard();
+        DeckCard(vector<Card>);
+        DeckCard(const DeckCard&);
+        ~DeckCard();
         void setCard(vector<Card>);
         vector<Card> getCard();
+        void addCard(Card);
+        virtual InventoryHolder& operator+(const Card& other) const override;
+        virtual InventoryHolder& operator-(const Card& other) const override;
+
 };
 
 #endif

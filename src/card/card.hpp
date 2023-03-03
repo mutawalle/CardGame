@@ -22,6 +22,7 @@ class Card : AbstractValue {
         Card& operator=(const Card& other);
         double getValue() const override;
         int getNumber() const;
+        string getColor() const;
 };
 
 #endif

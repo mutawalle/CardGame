@@ -34,3 +34,7 @@ double Card::getValue() const  {
 int Card::getNumber() const {
     return this->number;
 }
+
+string Card::getColor() const {
+    return this->color;
+}
