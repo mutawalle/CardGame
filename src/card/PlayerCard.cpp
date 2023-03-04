@@ -1,44 +1,24 @@
 #include "PlayerCard.hpp"
 
-PlayerCard::PlayerCard() {
-    this->cardList = {};
-}
+PlayerCard::PlayerCard() : InventoryHolder() {}
 
-PlayerCard::PlayerCard(vector<Card> cl) {
-    this->cardList = cl;
-}
+PlayerCard::PlayerCard(vector<Card> cl) : InventoryHolder(cl) {}
 
-PlayerCard::PlayerCard(const PlayerCard& pc) {
-    this->cardList = pc.cardList;
-}
+PlayerCard::PlayerCard(const PlayerCard& pc) : InventoryHolder(pc) {}
 
 PlayerCard::~PlayerCard() {
 }
 
-void PlayerCard::setCard(vector<Card> cl) {
-    this->cardList = cl;
-}
-
-vector<Card> PlayerCard::getCard() {
-    return this->cardList;
-}
-
-void PlayerCard::addCard(Card c) {
-    cardList.push_back(c);
-}
-
-InventoryHolder& PlayerCard::operator+(const Card& other) const {
-    PlayerCard *a = new PlayerCard(*this);
-    a->addCard(other);
-    return *a;
-}
-
-InventoryHolder& PlayerCard::operator-(const Card& other) const {
-    PlayerCard *a = new PlayerCard(*this);
-    vector<Card>::iterator itr;
-    itr = find((a->getCard()).begin(), (a->getCard()).end(), other);
-    if (itr != (a->getCard()).end()) {
-        (a->cardList).erase(itr);
+void PlayerCard::operator+(const Card& other) {
+    vector<Card>::iterator itr = find(this->cardList.begin(), this->cardList.end(), other);
+    if (itr == this->cardList.end()) {
+        cardList.push_back(other);
     }
-    return *a;
+}
+
+void PlayerCard::operator-(const Card& other) {
+    vector<Card>::iterator itr = find((this->cardList).begin(), (this->cardList).end(), other);
+    if (itr != (this->cardList).end()) {
+        (this->cardList).erase(itr);
+    }
 }

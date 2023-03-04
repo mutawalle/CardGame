@@ -7,21 +7,15 @@
 #include <vector>
 #include <algorithm>
 
-class TableCard: public InventoryHolder {
-
-    private:
-        vector<Card> cardList;
+class TableCard: public virtual InventoryHolder {
 
     public:
         TableCard();
         TableCard(vector<Card>);
         TableCard(const TableCard&);
         ~TableCard();
-        void setCard(vector<Card>);
-        vector<Card> getCard();
-        void addCard(Card);
-        virtual InventoryHolder& operator+(const Card& other) const override;
-        virtual InventoryHolder& operator-(const Card& other) const override;
+        virtual void operator+(const Card&);
+        virtual void operator-(const Card&);
 
 };
 

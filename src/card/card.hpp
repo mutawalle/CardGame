@@ -3,6 +3,7 @@
 #define CARD_HPP
 
 #include "abstractValue.hpp"
+#include <map>
 #include <string>
 #include <iostream>
 
@@ -18,6 +19,7 @@ class Card : public AbstractValue {
     public:
         Card();
         Card(int, string, double);
+        Card(int, string);
         Card(const Card&);
         ~Card();
         Card& operator=(const Card& other);

@@ -3,11 +3,26 @@
 #define INVENTORYHOLDER_HPP
 
 #include "card.hpp"
+#include <vector>
+#include <iostream>
+
+using namespace std;
 
 class InventoryHolder {
+    protected:
+        vector<Card> cardList;
+        InventoryHolder();
+        InventoryHolder(vector<Card>);
+        InventoryHolder(const InventoryHolder&);
+        ~InventoryHolder();
+
     public:
-        virtual InventoryHolder& operator+(const Card& other) const = 0;
-        virtual InventoryHolder& operator-(const Card& other) const = 0;
+        void setCard(vector<Card>);
+        vector<Card> getCard();
+        size_t getCardListLength();
+        friend ostream& operator<<(ostream&, const InventoryHolder&);
+        virtual void operator+(const Card& other) = 0;
+        virtual void operator-(const Card& other) = 0;
 };
 
 #endif

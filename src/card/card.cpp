@@ -1,5 +1,7 @@
 #include "card.hpp"
 
+map<string, double> colorEnum {{"Hijau", 0}, {"Biru", 1}, {"Kuning", 2}, {"Merah", 3}};
+
 Card::Card() {
     this->number = 0;
     this->color = "";
@@ -10,6 +12,13 @@ Card::Card(int number, string color, double value) {
     this->number = number;
     this->color = color;
     this->value = value;
+}
+
+Card::Card(int number, string color) {
+    this->number = number;
+    this->color = color;
+    double toValue = (double) number / 10 + colorEnum[color] * 3 / 100;
+    this->value = toValue;
 }
 
 Card::Card(const Card& other) {
