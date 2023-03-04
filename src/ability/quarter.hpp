@@ -12,7 +12,11 @@ public:
     Quarter() {}
     Quarter (GameState gameState) : Action(gameState) {}
     void DoAction() {
-        cout << "Quarter" << endl;
+        // int point = gameState.GetPoint();
+        // gameState.SetPoint(point / 4);
+        // int index = gameState.GetIndex();
+        // gameState.SetIndex(index + 1);
+
     }
 };
 

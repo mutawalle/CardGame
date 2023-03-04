@@ -11,7 +11,7 @@ public:
     ReverseDirection() {}
     ReverseDirection (GameState gameState) : Action(gameState) {}
     void DoAction() {
-        cout << "ReverseDirection" << endl;
+        // cara tau arah sekarang bagaimana ?
     }
 };
 

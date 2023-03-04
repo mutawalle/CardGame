@@ -9,7 +9,7 @@ class highCard :public AbstractValue {
         highCard(Card cards){
             this->cards=cards;
         }
-        double getValue(){
+        double getValue() const override{
             return cards.getValue();
 
         };

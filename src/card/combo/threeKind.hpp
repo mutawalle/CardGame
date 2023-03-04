@@ -9,7 +9,7 @@ class threeKind :public AbstractValue {
         threeKind(vector<Card> cards){
             this->cards=cards;
         }
-        double getValue(){
+        double getValue() const override{
             int number=cards[0].getNumber();
             int number_color=0;
             for(int i=0;i<cards.size();i++){
