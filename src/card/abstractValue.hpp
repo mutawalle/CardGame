@@ -2,14 +2,24 @@
 #define ABSTRACTVALUE_HPP
 // class abstrack memiliki value() virtual
 
-class AbstractValue{
+class AbstractValue {
     public:
-        virtual double value() const = 0;
-        bool operator>(const AbstractValue& other){
-            return this->value() > other.value();
+        virtual double getValue() const = 0;
+        bool operator>(const AbstractValue& other) {
+            return this->getValue() > other.getValue();
         }
-        bool operator<(const AbstractValue& other);
-        bool operator==(const AbstractValue& other);
+        bool operator<(const AbstractValue& other) {
+            return this->getValue() < other.getValue();
+        }
+        bool operator<=(const AbstractValue& other) {
+            return this->getValue() <= other.getValue();
+        }
+        bool operator>=(const AbstractValue& other) {
+            return this->getValue() >= other.getValue();
+        }
+        bool operator==(const AbstractValue& other) {
+            return this->getValue() == other.getValue();
+        }
 };
 
 

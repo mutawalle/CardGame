@@ -3,9 +3,19 @@
 #define PLAYERCARD_HPP
 
 #include "inventoryHolder.hpp"
+#include "card.hpp"
+#include <vector>
+#include <algorithm>
 
-class PlayerCard: InventoryHolder {
+class PlayerCard: public virtual InventoryHolder {
 
+    public:
+        PlayerCard();
+        PlayerCard(vector<Card>);
+        PlayerCard(const PlayerCard&);
+        ~PlayerCard();
+        virtual void operator+(const Card&);
+        virtual void operator-(const Card&);
 };
 
 #endif
