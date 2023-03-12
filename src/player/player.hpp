@@ -18,6 +18,29 @@ class Player {
         // ability (string) "" berarti tidak punya ability
         // poin
     public:
+        Player(): playerCard(){
+            name = "";
+            abillity = "";
+            poin = 0;
+        }
+        Player(string _name, PlayerCard pc, string _abillity, long long int _poin): playerCard(pc){
+            name = _name;
+            abillity = _abillity;
+            poin = _poin;
+        }
+        Player(const Player& other): playerCard(other.playerCard){
+            name = other.name;
+            abillity = other.abillity;
+            poin = other.poin;
+        }
+        // ~Player(){
+
+        // }
+
+        PlayerCard getPlayerCard (){
+            return playerCard;
+        }
+
         void bubbleSort() {
             for (int i = 0; i < playerCard.getCard().size() - 1; i++) {
                 for (int j = 0; j < playerCard.getCard().size()- i - 1; j++) {
@@ -30,9 +53,6 @@ class Player {
             }
         }
 
-        PlayerCard getPlayerCard (){
-            return playerCard;
-        }
         Card getHighCard (){
             Card card = playerCard.getCard()[0];
             for(int i = 1; i < playerCard.getCard().size(); i++){
