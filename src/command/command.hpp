@@ -1,13 +1,16 @@
 #ifndef COMMAND_HPP
 #define COMMAND_HPP
 
-#include <bits/stdc++.h>
-#include "../game/gameState.hpp"
+#include <bits/stdc++.h> 
+#include "../game/gameState.hpp" 
 #include "commandException.hpp"
 #include "../ability/action.hpp"
 
 using namespace std;
-vector<string> listCommand = {"re-roll", "quadruple", "quarter", "reverse", "swap", "switch", "abilityless", "next", "double", "half"};
+
+map<string, int> listCommand = {{"RE-ROLL", 3}, {"QUADRUPLE", 4}, {"QUARTER", 5}, {"REVERSE", 6}, {"SWAP",7}, {"SWITCH", 8}, {"ABILITYLESS", 9},
+                                {"NEXT", 0}, {"DOUBLE", 2}, {"HALF", 1}};
+// vector<string> listCommand = {"re-roll", "quadruple", "quarter", "reverse", "swap", "switch", "abilityless", "next", "double", "half"};
 class Command {
     private:
         GameState gameState;
@@ -15,25 +18,29 @@ class Command {
     public: 
         Command(GameState gameState){
             this->gameState = gameState;
-            command = ""
         }
 
         void commandValidation(){
             cout<<"silahkan input command : ";
             cin >> command;
             cout << endl;
-            bool isIn = false;
-            for(int i = 0; i < listCommand.size(); i++){
-                if(command == listCommand[i]){
-                    isIn = true;
-                    break;
-                }
-            }
-            if(!isIn){
+            auto In = listCommand.find(command);
+            if(In == listCommand.end()){
                 commandException err(command, " ");
                 throw err;
-
             }
+            // bool isIn = false;
+            // for(int i = 0; i < listCommand.size(); i++){
+            //     if(command == listCommand[i]){
+            //         isIn = true;
+            //         break;
+            //     }
+            // }
+            // if(!isIn){
+            //     commandException err(command, " ");
+            //     throw err;
+
+            // }
         }
         void inputCommand(){
             bool valid = false;
@@ -56,18 +63,18 @@ class Command {
         }
         void abillityValidation(){
             Action action(gameState);
-            switch (command)
+            switch (listCommand[command])
             {
-            case "next":
+            case 0:
                 action.Next();
                 break;
-            case "half":
+            case 1:
                 action.half();
                 break;
-            case "double":
+            case 2:
                 action.Double();
                 break;
-            case "re-roll":
+            case 3:
                 if(gameState.getPlayer(gameState.getTurn()).getAbillity() == "re-roll"){
                     action.reRoll();
                 }
@@ -76,7 +83,7 @@ class Command {
                     throw err;
                 }
                 break;
-            case "quadruple":
+            case 4:
                 if(gameState.getPlayer(gameState.getTurn()).getAbillity() == "quadruple"){
                     action.Quadruple();
                 }
@@ -85,7 +92,7 @@ class Command {
                     throw err;
                 }
                 break;
-            case "quater":
+            case 5:
                 if(gameState.getPlayer(gameState.getTurn()).getAbillity() == "qurter"){
                     action.Quarter();
                 }
@@ -94,7 +101,7 @@ class Command {
                     throw err;
                 }
                 break;
-            case "reverseDirection":
+            case 6:
                 if(gameState.getPlayer(gameState.getTurn()).getAbillity() == "reverseDirection"){
                     action.reverseDirection();
                 }
@@ -103,7 +110,7 @@ class Command {
                     throw err;
                 }
                 break;
-            case "swap-card":
+            case 7:
                 if(gameState.getPlayer(gameState.getTurn()).getAbillity() == "swap-card"){
                     action.swapCard();
                 }
@@ -112,7 +119,7 @@ class Command {
                     throw err;
                 }
                 break;
-            case "switch":
+            case 8:
                 if(gameState.getPlayer(gameState.getTurn()).getAbillity() == "switch"){
                     action.switch();
                 }
@@ -121,7 +128,7 @@ class Command {
                     throw err;
                 }
                 break;
-            case "abillityless":
+            case 9:
                 if(gameState.getPlayer(gameState.getTurn()).getAbillity() == "abilityLess"){
                     action.abillityLess();
                 }
