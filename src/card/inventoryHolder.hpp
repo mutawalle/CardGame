@@ -18,7 +18,7 @@ class InventoryHolder {
         InventoryHolder(const InventoryHolder&);
         ~InventoryHolder();
         void setCard(vector<Card>);
-        vector<Card> getCard();
+        vector<Card>& getCard();
         size_t getCardListLength();
         friend ostream& operator<<(ostream&, const InventoryHolder&);
         virtual void operator+(const Card& other) = 0;

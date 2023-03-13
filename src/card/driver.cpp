@@ -11,6 +11,16 @@ using namespace std;
 int main() {
 
     Card c(15, "Hijau", 0.1), d(2, "Merah"), e(3, "Kuning");
+    vector<Card> mc = {d, e, c};
+    for (int i = 0; i < 3; i++) {
+        cout << mc[i] << " ";
+    }
+    cout << endl;
+    sort(mc.begin(), mc.end());
+    for (int i = 0; i < 3; i++) {
+        cout << mc[i] << " ";
+    }
+    cout << endl;
     // DeckCard a;
     // a - d;
     // a - e;
@@ -21,11 +31,11 @@ int main() {
     // pc + d;
     // pc - d;
     // cout << pc << endl;
-    TableCard tc;
-    tc + e;
-    tc + d;
-    tc - d;
-    cout << tc << endl;
+    // TableCard tc;
+    // tc + e;
+    // tc + d;
+    // tc - d;
+    // cout << tc << endl;
 
     return 0;
 }
