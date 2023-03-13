@@ -63,6 +63,7 @@ class Game {
         }
 
         void roundth(){
+            this->gameState.canUseAbility = true;
             if(this->round==1){
                 splitCards();
             }else if(this->round==2){
@@ -79,8 +80,6 @@ class Game {
             }
 
             if(this->round == 6){
-                this->gameState.canUseAbility = true;
-
                 int winner6Idx=0;
                 for(int i=0;i<7;i++){
                     if(this->gameState.players.at(i).value() > this->gameState.players.at(winner6Idx).value()){

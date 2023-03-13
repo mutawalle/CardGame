@@ -4,7 +4,18 @@
 #include <bits/stdc++.h> 
 #include "../game/gameState.hpp" 
 #include "commandException.hpp"
-#include "../ability/action.hpp"
+
+#include "../ability/double.hpp"
+#include "../ability/abillityless.hpp"
+#include "../ability/half.hpp"
+#include "../ability/next.hpp"
+#include "../ability/quadruple.hpp"
+#include "../ability/quarter.hpp"
+#include "../ability/reRoll.hpp"
+#include "../ability/reverse_direction.hpp"
+#include "../ability/swap_card.hpp"
+#include "../ability/switch.hpp"
+
 
 using namespace std;
 
@@ -62,21 +73,24 @@ class Command {
             this->gameState = gameState;
         }
         void abillityValidation(){
-            Action action(gameState);
             switch (listCommand[command])
             {
             case 0:
-                action.Next();
+                Next next = Next(this->gameState);
+                next.DoAction();
                 break;
             case 1:
-                action.half();
+                Double dble = Double(this->gameState);
+                dble.DoAction();
                 break;
             case 2:
-                action.Double();
+                Half half = Half(this->gameState);
+                half.DoAction();
                 break;
             case 3:
-                if(gameState.getPlayer(gameState.getTurn()).getAbillity() == "re-roll"){
-                    action.reRoll();
+                if(gameState.players.at(gameState.turn).getAbility() == "re-roll"){
+                    ReRoll reRoll = ReRoll(this->gameState);
+                    reRoll.DoAction();
                 }
                 else{
                     commandException err(" ", "re-roll");
@@ -84,8 +98,9 @@ class Command {
                 }
                 break;
             case 4:
-                if(gameState.getPlayer(gameState.getTurn()).getAbillity() == "quadruple"){
-                    action.Quadruple();
+                if(gameState.players.at(gameState.turn).getAbility() == "quadruple"){
+                    Quadruple quadruple = Quadruple(this->gameState);
+                    quadruple.DoAction();
                 }
                 else{
                     commandException err(" ", "quadruple");
@@ -93,8 +108,9 @@ class Command {
                 }
                 break;
             case 5:
-                if(gameState.getPlayer(gameState.getTurn()).getAbillity() == "qurter"){
-                    action.Quarter();
+                if(gameState.players.at(gameState.turn).getAbility() == "quarter"){
+                    Quarter quarter = Quarter(this->gameState);
+                    quarter.DoAction();
                 }
                 else{
                     commandException err(" ", "quarter");
@@ -102,8 +118,8 @@ class Command {
                 }
                 break;
             case 6:
-                if(gameState.getPlayer(gameState.getTurn()).getAbillity() == "reverseDirection"){
-                    action.reverseDirection();
+                if(gameState.players.at(gameState.turn).getAbility() == "reverseDirection"){
+                    ReverseDirection reverseDirection = ReverseDirection(this->gameState);
                 }
                 else{
                     commandException err(" ", "reverseDirection");
@@ -111,8 +127,18 @@ class Command {
                 }
                 break;
             case 7:
-                if(gameState.getPlayer(gameState.getTurn()).getAbillity() == "swap-card"){
-                    action.swapCard();
+                if(gameState.players.at(gameState.turn).getAbility() == "swap-card"){
+                    int noPlayer1, noPlayer2, noKartu1, noKartu2;
+                    cout << "Masukkan nomor urut pemain pertama yang ingin ditukar" << endl;
+                    cin >> noPlayer1;
+                    cout << "Masukkan nomor urut pemain kedua yang ingin ditukar" << endl;
+                    cin >> noPlayer2;
+                    cout << "Pilih kiri atau kanan dari pemain pertama" << endl;
+                    cin >> noKartu1;
+                    cout << "Pilih kiri atau kanan dari pemain kedua" << endl;
+                    cin >> noKartu2;
+                    SwapCard swapCard = SwapCard(this->gameState, noPlayer1, noPlayer2, noKartu1, noKartu2);
+                    swapCard.DoAction();
                 }
                 else{
                     commandException err(" ", "swap-card");
@@ -120,8 +146,12 @@ class Command {
                 }
                 break;
             case 8:
-                if(gameState.getPlayer(gameState.getTurn()).getAbillity() == "switch"){
-                    action.switch();
+                if(gameState.players.at(gameState.turn).getAbility() == "switch"){
+                    int noPlayer;
+                    cout << "Masukkan no pemain yang akan ditukar dengan Anda" << endl;
+                    cin >> noPlayer;
+                    Switch swit = Switch(this->gameState, noPlayer);
+                    swit.DoAction();
                 }
                 else{
                     commandException err(" ", "switch");
@@ -129,8 +159,9 @@ class Command {
                 }
                 break;
             case 9:
-                if(gameState.getPlayer(gameState.getTurn()).getAbillity() == "abilityLess"){
-                    action.abillityLess();
+                if(gameState.players.at(gameState.turn).getAbility() == "abilityLess"){
+                    AbililyLess abillityLess = AbilityLess(this->gameState);
+                    abilityLess.DoAction(); 
                 }
                 else{
                     commandException err(" ", "abillityLess");
