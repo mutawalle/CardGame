@@ -1,7 +1,7 @@
 #include "../abstractValue.hpp"
 #include "../card.hpp"
 #include <vector>
-
+//salah
 class straight :public AbstractValue {
     private:
         vector<Card> cards;
