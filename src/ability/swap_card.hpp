@@ -8,14 +8,22 @@
 using namespace std;
 
 class SwapCard : public Action {
+    int firstPlayer;
+    int secondPlayer;
+    int cardFirst;
+    int cardSecond;
 public:
     SwapCard() {}
-    SwapCard (GameState gameState) : Action(gameState) {}
+    SwapCard (GameState gameState, int firstPlayer, int secondPlayer, int cardFirst, int cardSecond) : Action(gameState) {
+        this->firstPlayer = firstPlayer;
+        this->secondPlayer = secondPlayer;
+        this->cardFirst = cardFirst;
+        this->cardSecond = cardSecond;
+    }
     void DoAction() {
-        cout << "masukan pemain yang ingin ditukar kartunya: ";
-        int player;
-        cin >> player;
-        //ambil
+        vector<Player> players = this->gameState.players;
+        vector<Card> playerCard1 = this->gameState.players.at(firstPlayer).getPlayerCard();
+        vector<Card> playerCard2 = this->gameState.players.at(secondPlayer).getPlayerCard();
     }
 };
 

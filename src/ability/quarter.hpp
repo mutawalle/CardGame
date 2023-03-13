@@ -12,11 +12,10 @@ public:
     Quarter() {}
     Quarter (GameState gameState) : Action(gameState) {}
     void DoAction() {
-        // int point = gameState.GetPoint();
-        // gameState.SetPoint(point / 4);
-        // int index = gameState.GetIndex();
-        // gameState.SetIndex(index + 1);
-
+        if(this->gameState.point>=4){
+            this->gameState.point/=4;
+        }
+        this->gameState.turn++;
     }
 };
 

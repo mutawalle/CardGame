@@ -11,10 +11,8 @@ public:
     Double() {}
     Double (GameState gameState) : Action(gameState) {}
     void DoAction() {
-        // int point = gameState.GetPoint();
-        // gameState.SetPoint(point * 2);
-        // int index = gameState.GetIndex();
-        // gameState.SetIndex(index + 1);
+        this->gameState.point*=2;
+        this->gameState.turn++;
     }
 };
 

@@ -12,8 +12,7 @@ public:
     Next() {}
     Next (GameState gameState) : Action(gameState) {}
     void DoAction() {
-        // int index = gameState.GetIndex();
-        // gameState.SetIndex(index + 1);
+        this->gameState.turn++;
     }
 };
 
