@@ -10,20 +10,17 @@ using namespace std;
 class Switch : public Action {
 protected:
     // Indeks pemain pada vector of pemain
-    int firstPlayer;        
-    int secondPlayer;
+    int target;        
 public:
     Switch() {}
-    Switch (GameState gameState, int firstPlayer, int secondPlayer) : Action(gameState) {
-        this->firstPlayer = firstPlayer;
-        this->secondPlayer = secondPlayer;
+    Switch (GameState gameState, int target) : Action(gameState) {
+        this->target = target;
     }
     void DoAction() {
-        vector<Card> cl1 = this->gameState.players.at(firstPlayer).getPlayerCard().getCard();
-        vector<Card> cl2 = this->gameState.players.at(secondPlayer).getPlayerCard().getCard();
-        vector<Card> temp = cl1;
-        cl1 = cl2;
-        cl2 = temp;
+        vector<Card> cl1 = this->gameState.players.at(this->gameState.turn).getPlayerCard().getCard();
+        vector<Card> cl2 = this->gameState.players.at(this->target).getPlayerCard().getCard();
+        this->gameState.players.at(this->target).getPlayerCard().setCard(cl1);
+        this->gameState.players.at(this->gameState.turn).getPlayerCard().setCard(cl2);
     }
 };
 
