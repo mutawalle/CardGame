@@ -15,7 +15,7 @@ public:
         cout << "masukan pemain yang ingin ditukar kartunya: ";
         int player;
         cin >> player;
-        
+        //ambil
     }
 };
 
