@@ -14,7 +14,6 @@ class GameState {
         long long int point;
         vector<int> order;
         int turn;
-        bool canUseAbility;
 
         GameState(){
             this->players = {Player(), Player(), Player(), Player(), Player(), Player(), Player()};
@@ -23,7 +22,6 @@ class GameState {
             this->point = 64;
             this->order = {0,1,2,3,4,5,6};
             this->turn = 0;
-            this->canUseAbility = false;
         }
 
         GameState(long long int point, vector<int> order, int turn, bool canUseAbility, vector<Player> players, DeckCard deckCard, TableCard tableCard){
@@ -33,7 +31,6 @@ class GameState {
             this->point = point;
             this->order = order;
             this->turn = turn;
-            this->canUseAbility = canUseAbility;
         }
 
         GameState(const GameState& other){
@@ -43,7 +40,6 @@ class GameState {
             this->point = other.point;
             this->order = other.order;
             this->turn = other.turn;
-            this->canUseAbility = other.canUseAbility;
         }
 
         GameState& operator=(const GameState& other){
@@ -54,7 +50,6 @@ class GameState {
                 this->point = other.point;
                 this->order = other.order;
                 this->turn = other.turn;
-                this->canUseAbility = other.canUseAbility;
             }
             return *this;
         }
@@ -94,7 +89,6 @@ class GameState {
             cout << turn << endl;
 
             cout << "Bisa ability?" << endl;
-            canUseAbility ? cout << "Bisa" << endl : cout << "Tidak" << endl;
         }
 };
 

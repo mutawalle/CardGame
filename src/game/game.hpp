@@ -63,7 +63,6 @@ class Game {
         }
 
         void roundth(){
-            this->gameState.canUseAbility = true;
             if(this->round==1){
                 splitCards();
             }else if(this->round==2){
@@ -108,8 +107,9 @@ class Game {
                     this->gameState.point = 64;
                     this->gameState.order = {0,1,2,3,4,5,6};
                     this->gameState.turn = 0;
-                    this->gameState.canUseAbility = false;
                 }
+            }else{
+
             }
         }
 };
