@@ -12,7 +12,7 @@ void InventoryHolder::setCard(vector<Card> cl) {
     this->cardList = cl;
 }
 
-vector<Card> InventoryHolder::getCard() {
+vector<Card>& InventoryHolder::getCard() {
     return this->cardList;
 }
 
