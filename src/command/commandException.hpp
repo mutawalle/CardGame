@@ -8,10 +8,12 @@ class commandException{
     private:
         string commandInputed;
         string abillity;
+        bool abilityLess;
     public:
-        commandException(string commandInputed, string abillity){
+        commandException(string commandInputed, string abillity, bool abilityLess){
             this->commandInputed = commandInputed;
             this->abillity = abillity;
+            this->abilityLess = abilityLess;
         }
         void errorMessage(){
             if(commandInputed != " "){
@@ -19,8 +21,14 @@ class commandException{
                 cout << "silahkan input lagi!"<<endl;
             }
             else if(abillity != " "){
-                cout << abillity << " tidak dimiliki oleh player!"<< endl;
-                cout << "silahkan input lagi!"<<endl;
+                if(abilityLess == true){
+                    cout << "kartu " << abillity << " telah dimatikan"<<endl;
+                    cout << "silahkan masukkan perintah lainnya!"<<endl;
+                }
+                else{
+                    cout << abillity << " tidak dimiliki oleh player!"<< endl;
+                    cout << "silahkan input lagi!"<<endl;
+                }
             }
         }
 

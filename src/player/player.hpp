@@ -3,6 +3,19 @@
 
 #include "../card/playerCard.hpp"
 #include "../card/card.hpp"
+
+//combo
+#include "../card/combo/doublePair.hpp"
+#include "../card/combo/flush.hpp"
+#include "../card/combo/fourKind.hpp"
+#include "../card/combo/fullHouse.hpp"
+#include "../card/combo/highCard.hpp"
+#include "../card/combo/pair.hpp"
+#include "../card/combo/straight.hpp"
+#include "../card/combo/straightFlush.hpp"
+#include "../card/combo/threeKind.hpp"
+#include "../card/combo/twoPair.hpp"
+
 #include <bits/stdc++.h>
 
 using namespace std;
@@ -335,36 +348,36 @@ class Player {
             // }
             // return SFCard;
         }
-        vector<Card> value(){
+        double value(){
             sorting();
             if(straightFlush().size() == 5){
-                return straightFlush();
+                return straightFlushCombo(straightFlush()).getValue();
             }
             else if(FourOfKind().size() == 4){
-                return FourOfKind();
+                return fourKindCombo(FourOfKind()).getValue();
             }
             else if(FullHouse().size() == 5){
-                return FullHouse();
+                return fullHouseCombo(FullHouse()).getValue();
             }
             else if(Flush().size() == 5 ){
-                return Flush();
+                return flushCombo(Flush()).getValue();
             }
             else if(straight().size() == 5){
-                return straight();
+                return straightCombo(straight()).getValue();
             }
             else if(threeOfKind().size() == 3){
-                return threeOfKind();
+                return threeKindCombo(threeOfKind()).getValue();
             }
             else if(PairCard().size() == 4){
-                return PairCard();
+                return doublePairCombo(PairCard()).getValue();
             }
             else if(PairCard().size() == 2){
-                return PairCard();
+                return PairCombo(PairCard()).getValue();
             }
             else{
                 vector<Card> high;
                 high.push_back(getHighCard());
-                return high;
+                return high[0].getValue();
             }
         }
 };
