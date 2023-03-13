@@ -12,29 +12,46 @@ class Player {
         string name;
         PlayerCard playerCard;
         string ability;
-        long long int poin;
+        long long int point;
     public:
         Player(): playerCard(){
             name = "";
-            abillity = "";
-            poin = 0;
+            ability = "";
+            point = 0;
         }
         Player(string _name, PlayerCard pc, string _abillity, long long int _poin): playerCard(pc){
             name = _name;
-            abillity = _abillity;
-            poin = _poin;
+            ability = _abillity;
+            point = _poin;
         }
         Player(const Player& other): playerCard(other.playerCard){
             name = other.name;
-            abillity = other.abillity;
-            poin = other.poin;
+            ability = other.ability;
+            point = other.point;
         }
-        // ~Player(){
-
-        // }
 
         PlayerCard getPlayerCard (){
             return playerCard;
+        }
+
+        string getAbility(){
+            return ability;
+        }
+
+        long long int getPoint(){
+            return point;
+        }
+
+        void setPoint(long long int point){
+            this->point = point;
+        }
+
+        void setAbility(string ability){
+            this->ability = ability;
+        }
+
+        void setPlayerCard(PlayerCard playerCard){
+            this->playerCard = playerCard;
         }
 
         void bubbleSort() {

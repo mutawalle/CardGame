@@ -88,21 +88,21 @@ class Game {
                     }
                 }
 
-                this->gameState.players.at(winner6Idx).poin += gameState.point;
+                this->gameState.players.at(winner6Idx).setPoint(this->gameState.players.at(winner6Idx).getPoint() + this->gameState.point);
 
                 int winnerAllIdx = 0;
                 for(int i=0;i<7;i++){
-                    if(this->gameState.players.at(i).poin > this->gameState.players.at(winnerAllIdx).poin){
+                    if(this->gameState.players.at(i).getPoint() > this->gameState.players.at(winnerAllIdx).getPoint()){
                         winnerAllIdx = i;
                     }
                 }
 
-                if(this->gameState.players.at(winnerAllIdx).poin >= pow(2,32)){
+                if(this->gameState.players.at(winnerAllIdx).getPoint() >= pow(2,32)){
                     this->isFinish = true;
                 }else{
                     for(int i=0;i<7;i++){
                         this->gameState.players.at(i).setPlayerCard({});
-                        this->gameState.players.at(i).setAbility = "";
+                        this->gameState.players.at(i).setAbility("");
                     }
                     this->gameState.tableCard = TableCard();
                     this->gameState.deckCard = DeckCard();
