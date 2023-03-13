@@ -4,7 +4,7 @@
 #include <bits/stdc++.h> 
 #include "../game/gameState.hpp" 
 #include "commandException.hpp"
-#include "../ability/Action.hpp"
+#include "../ability/action.hpp"
 
 using namespace std;
 

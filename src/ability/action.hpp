@@ -2,7 +2,7 @@
 #define ACTION_HPP
 
 #include <iostream>
-#include "gameState.hpp"
+#include "../game/gameState.hpp"
 
 using namespace std;
 
