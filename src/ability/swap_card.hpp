@@ -22,8 +22,14 @@ public:
     }
     void DoAction() {
         vector<Player> players = this->gameState.players;
-        vector<Card> playerCard1 = this->gameState.players.at(firstPlayer).getPlayerCard();
-        vector<Card> playerCard2 = this->gameState.players.at(secondPlayer).getPlayerCard();
+        vector<Card> playerCard1 = players.at(firstPlayer).getPlayerCard().getCard();
+        vector<Card> playerCard2 = players.at(secondPlayer).getPlayerCard().getCard();
+        Card tmp = playerCard1.at(cardFirst);
+
+        playerCard1.erase(playerCard1.begin() + cardFirst);
+        playerCard1.insert(playerCard1.begin() + cardFirst, playerCard2.at(cardSecond));
+        playerCard2.erase(playerCard2.begin() + cardSecond);
+        playerCard2.insert(playerCard2.begin() + cardSecond, tmp);
     }
 };
 

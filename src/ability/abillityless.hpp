@@ -13,7 +13,8 @@ public:
         this->targetPlayer = targetPlayer;
     }
     void DoAction() {
-        this->gameState.players.at(this->targetPlayer).setAbilityLess = true;
+        this->gameState.players.at(this->targetPlayer).setAbilityLess(true);
+        this->gameState.players.at(this->targetPlayer).setAbility("");
         this->gameState.turn++;
     }
 };
