@@ -4,7 +4,7 @@
 #include <bits/stdc++.h>
 #include "../game/gameState.hpp"
 #include "commandException.hpp"
-#include "../ability/Action.hpp"
+#include "../ability/action.hpp"
 
 using namespace std;
 vector<string> listCommand = {"re-roll", "quadruple", "quarter", "reverse", "swap", "switch", "abilityless", "next", "double", "half"};
@@ -13,9 +13,10 @@ class Command {
         GameState gameState;
         string command;
     public: 
-        // Command(GameState gameState){
-        //     this->gameState = gameState;
-        // }
+        Command(GameState gameState){
+            this->gameState = gameState;
+            command = ""
+        }
 
         void commandValidation(){
             cout<<"silahkan input command : ";

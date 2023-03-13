@@ -11,12 +11,8 @@ class Player {
     private:
         string name;
         PlayerCard playerCard;
-        string abillity;
+        string ability;
         long long int poin;
-        // nama (string)
-        // playerCard (PlayerCard)
-        // ability (string) "" berarti tidak punya ability
-        // poin
     public:
         void bubbleSort() {
             for (int i = 0; i < playerCard.getCard().size() - 1; i++) {
@@ -33,6 +29,15 @@ class Player {
         PlayerCard getPlayerCard (){
             return playerCard;
         }
+
+        void setPlayerCard(PlayerCard playerCard){
+            this->playerCard = playerCard;
+        }
+
+        string getAbility(){
+            return this->ability;
+        }
+
         Card getHighCard (){
             Card card = playerCard.getCard()[0];
             for(int i = 1; i < playerCard.getCard().size(); i++){
