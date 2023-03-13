@@ -2,11 +2,11 @@
 #include "../card.hpp"
 #include <vector>
 
-class Pair :public AbstractValue {
+class PairCombo :public AbstractValue {
     private:
         vector<Card> cards;
     public:
-        Pair(vector<Card> cards){
+        PairCombo(vector<Card> cards){
             this->cards=cards;
         }
 
@@ -26,7 +26,7 @@ class Pair :public AbstractValue {
             if(cards[0].getColor()=="Merah" || cards[1].getColor()=="Merah"){
                 color_number=4;
             }
-            return 1.4+(number-1)*0.1+color_number*0.03;
+            return 1.4+(number-1)*0.1+(color_number-1)*0.03;
 
         };
 };

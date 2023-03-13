@@ -2,11 +2,11 @@
 #include "../card.hpp"
 #include <vector>
 
-class straightFlush :public AbstractValue {
+class straightFlushCombo :public AbstractValue {
     private:
         vector<Card> cards;
     public:
-        straightFlush(vector<Card> cards){
+        straightFlushCombo(vector<Card> cards){
             this->cards=cards;
         }
         double getValue() const override{
@@ -30,6 +30,6 @@ class straightFlush :public AbstractValue {
                 }
             }
             
-            return 10.5+(number-1)*0.1+color_number*0.03;
+            return 10.5+(number-1)*0.1+(color_number-1)*0.03;
         };
 };

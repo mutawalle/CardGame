@@ -2,11 +2,11 @@
 #include "../card.hpp"
 #include <vector>
 
-class threeKind :public AbstractValue {
+class threeKindCombo :public AbstractValue {
     private:
         vector<Card> cards;
     public:
-        threeKind(vector<Card> cards){
+        threeKindCombo(vector<Card> cards){
             this->cards=cards;
         }
         double getValue() const override{
@@ -31,6 +31,6 @@ class threeKind :public AbstractValue {
                 }
             }
             
-            return 4+(number-1)*0.1+number_color*0.03;
+            return 4+(number-1)*0.1+(number_color-1)*0.03;
         };
 };

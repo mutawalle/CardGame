@@ -37,6 +37,6 @@ class twoPair :public AbstractValue {
                     }
                 }
             }
-            return 2.7+(number-1)*0.1+color_number*0.03;
+            return 2.7+(number-1)*0.1+(color_number-1)*0.03;
         };
 };
