@@ -13,21 +13,25 @@ class Player {
         PlayerCard playerCard;
         string ability;
         long long int point;
+        bool isAbilityLess;
     public:
         Player(): playerCard(){
             name = "";
             ability = "";
             point = 0;
+            isAbilityLess = false;
         }
         Player(string _name, PlayerCard pc, string _abillity, long long int _poin): playerCard(pc){
             name = _name;
             ability = _abillity;
             point = _poin;
+            isAbilityLess = false;
         }
         Player(const Player& other): playerCard(other.playerCard){
             name = other.name;
             ability = other.ability;
             point = other.point;
+            isAbilityLess = other.isAbilityLess;
         }
 
         PlayerCard getPlayerCard (){
@@ -58,6 +62,19 @@ class Player {
             this->point = point;
         }
 
+        string getName (){
+            return this-> name;
+        }
+        void setName(string name){
+            this->name = name;
+        }
+        void setAbilityLess (bool isAbilityLess){
+            this->isAbilityLess = isAbilityLess;
+        }
+
+        bool getIsAbilityLess (){
+            return isAbilityLess;
+        }
         void setAbility(string ability){
             this->ability = ability;
         }
