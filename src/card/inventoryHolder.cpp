@@ -24,7 +24,7 @@ ostream& operator<<(ostream& os, const InventoryHolder& dc) {
     if (dc.cardList.size() == 0) {
         os << "Card is empty";
     } else {
-        for (int i = 0; i < dc.cardList.size(); i++) {
+        for (size_t i = 0; i < dc.cardList.size(); i++) {
             if (i != 0) {
                 os << " ";
             }

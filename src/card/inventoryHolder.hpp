@@ -11,12 +11,12 @@ using namespace std;
 class InventoryHolder {
     protected:
         vector<Card> cardList;
+
+    public:
         InventoryHolder();
         InventoryHolder(vector<Card>);
         InventoryHolder(const InventoryHolder&);
         ~InventoryHolder();
-
-    public:
         void setCard(vector<Card>);
         vector<Card> getCard();
         size_t getCardListLength();
