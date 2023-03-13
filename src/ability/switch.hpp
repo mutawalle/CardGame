@@ -8,12 +8,22 @@
 using namespace std;
 
 class Switch : public Action {
+protected:
+    // Indeks pemain pada vector of pemain
+    int firstPlayer;        
+    int secondPlayer;
 public:
     Switch() {}
-    Switch (GameState gameState) : Action(gameState) {}
+    Switch (GameState gameState, int firstPlayer, int secondPlayer) : Action(gameState) {
+        this->firstPlayer = firstPlayer;
+        this->secondPlayer = secondPlayer;
+    }
     void DoAction() {
-        cout << "Switch" << endl;
-        
+        vector<Card> cl1 = this->gameState.players.at(firstPlayer).getPlayerCard().getCard();
+        vector<Card> cl2 = this->gameState.players.at(secondPlayer).getPlayerCard().getCard();
+        vector<Card> temp = cl1;
+        cl1 = cl2;
+        cl2 = temp;
     }
 };
 
