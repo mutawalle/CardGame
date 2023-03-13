@@ -76,20 +76,27 @@ class Command {
             switch (listCommand[command])
             {
             case 0:
-                Next next = Next(this->gameState);
+            {
+                Next next(this->gameState);
                 next.DoAction();
                 break;
+            }
             case 1:
-                Double dble = Double(this->gameState);
+            {
+                Double dble(this->gameState);
                 dble.DoAction();
                 break;
+            }
             case 2:
-                Half half = Half(this->gameState);
+            {
+                Half half(this->gameState);
                 half.DoAction();
                 break;
+            }
             case 3:
+            {
                 if(gameState.players.at(gameState.turn).getAbility() == "re-roll"){
-                    ReRoll reRoll = ReRoll(this->gameState);
+                    ReRoll reRoll(this->gameState);
                     reRoll.DoAction();
                 }
                 else{
@@ -97,9 +104,11 @@ class Command {
                     throw err;
                 }
                 break;
+            }
             case 4:
+            {
                 if(gameState.players.at(gameState.turn).getAbility() == "quadruple"){
-                    Quadruple quadruple = Quadruple(this->gameState);
+                    Quadruple quadruple(this->gameState);
                     quadruple.DoAction();
                 }
                 else{
@@ -107,9 +116,11 @@ class Command {
                     throw err;
                 }
                 break;
+            }
             case 5:
+            {
                 if(gameState.players.at(gameState.turn).getAbility() == "quarter"){
-                    Quarter quarter = Quarter(this->gameState);
+                    Quarter quarter(this->gameState);
                     quarter.DoAction();
                 }
                 else{
@@ -117,9 +128,11 @@ class Command {
                     throw err;
                 }
                 break;
+            }
             case 6:
+            {
                 if(gameState.players.at(gameState.turn).getAbility() == "reverseDirection"){
-                    ReverseDirection reverseDirection = ReverseDirection(this->gameState);
+                    ReverseDirection reverseDirection(this->gameState);
                     reverseDirection.DoAction();
                 }
                 else{
@@ -127,7 +140,9 @@ class Command {
                     throw err;
                 }
                 break;
+            }
             case 7:
+            {
                 if(gameState.players.at(gameState.turn).getAbility() == "swap-card"){
                     int noPlayer1, noPlayer2, noKartu1, noKartu2;
                     cout << "Masukkan nomor urut pemain pertama yang ingin ditukar" << endl;
@@ -138,7 +153,7 @@ class Command {
                     cin >> noKartu1;
                     cout << "Pilih kiri atau kanan dari pemain kedua" << endl;
                     cin >> noKartu2;
-                    SwapCard swapCard = SwapCard(this->gameState, noPlayer1, noPlayer2, noKartu1, noKartu2);
+                    SwapCard swapCard(this->gameState, noPlayer1, noPlayer2, noKartu1, noKartu2);
                     swapCard.DoAction();
                 }
                 else{
@@ -146,7 +161,9 @@ class Command {
                     throw err;
                 }
                 break;
+            }
             case 8:
+            {
                 if(gameState.players.at(gameState.turn).getAbility() == "switch"){
                     int noPlayer;
                     cout << "Masukkan no pemain yang akan ditukar dengan Anda" << endl;
@@ -159,7 +176,9 @@ class Command {
                     throw err;
                 }
                 break;
+            }
             case 9:
+            {
                 if(gameState.players.at(gameState.turn).getAbility() == "abilityLess"){
                     vector<Player> listTarget;
                     cout << gameState.players.at(gameState.turn).getName() << " akan mematikan kartu ablity lawan!"<< endl;
@@ -188,6 +207,7 @@ class Command {
                     throw err;
                 }
                 break;
+            }
 
             default:
                 break;
