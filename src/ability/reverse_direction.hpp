@@ -18,6 +18,7 @@ public:
         }
         this->gameState.order = order;
         this->gameState.turn++;
+        this->gameState.turn %= 7;
     }
 };
 

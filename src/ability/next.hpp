@@ -13,6 +13,7 @@ public:
     Next (GameState gameState) : Action(gameState) {}
     void DoAction() {
         this->gameState.turn++;
+        this->gameState.turn %= 7;
     }
 };
 

@@ -27,6 +27,7 @@ public:
         this->gameState.deckCard = deckCard;
         this->gameState.players.at(this->gameState.turn).setPlayerCard(playerCard);
         this->gameState.turn++;
+        this->gameState.turn %= 7;
     }
 };
 

@@ -72,6 +72,9 @@ class GameState {
             }
 
             cout << "Table Card" << endl;
+            for(int i=0;i<tableCard.getCardListLength();i++){
+                cout << tableCard.getCard().at(i) << endl;
+            }
 
             cout << "Poin = " << point << endl;
 

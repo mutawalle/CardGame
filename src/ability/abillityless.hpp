@@ -16,6 +16,7 @@ public:
         this->gameState.players.at(this->targetPlayer).setAbilityLess(true);
         this->gameState.players.at(this->targetPlayer).setAbility("");
         this->gameState.turn++;
+        this->gameState.turn %= 7;
     }
 };
 

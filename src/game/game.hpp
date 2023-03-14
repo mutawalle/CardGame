@@ -39,7 +39,7 @@ class Game {
                 int randVal = rand() % i;
                 Card tmp = this->gameState.deckCard.getCard()[randVal];
                 PlayerCard playerCard = this->gameState.players[j%7].getPlayerCard();
-                
+
                 playerCard + tmp;
                 this->gameState.deckCard - tmp;
 
@@ -49,22 +49,20 @@ class Game {
         }
 
         void splitAbilities(){
-            vector<string> listAbility = abilities;
             for(int i=7;i>0;i--){
                 int randVal = rand() % i;
-                gameState.players[8-i].getAbility() = listAbility[randVal];
-                listAbility.erase(listAbility.begin() + randVal);
+                gameState.players[7-i].setAbility(abilities[randVal]);
+                abilities.erase(abilities.begin() + randVal);
             }
         }
 
         void addTableCard(){
             int lenDC = gameState.deckCard.getCardListLength();
             int randVal = rand() % lenDC;
-            vector<Card> tableCard = gameState.tableCard.getCard();
-            vector<Card> deckCard = gameState.deckCard.getCard();
+            Card tmp = this->gameState.deckCard.getCard().at(randVal);
 
-            tableCard.insert(tableCard.end(), deckCard.at(randVal));
-            deckCard.erase(deckCard.begin() + randVal);
+            this->gameState.tableCard + tmp;
+            this->gameState.deckCard - tmp;
         }
 
         void roundth(){
@@ -79,7 +77,6 @@ class Game {
             for(int i=0;i<7;i++){
                 Command command = Command(gameState);
                 command.inputCommand();
-                command.abillityValidation();
                 this->gameState = command.getGamestate();
                 this->gameState.printState();
             }

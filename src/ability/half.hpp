@@ -15,6 +15,7 @@ public:
             this->gameState.point/=2;
         }
         this->gameState.turn++;
+        this->gameState.turn %= 7;
     }
 };
 

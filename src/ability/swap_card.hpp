@@ -30,6 +30,8 @@ public:
         playerCard1.insert(playerCard1.begin() + cardFirst, playerCard2.at(cardSecond));
         playerCard2.erase(playerCard2.begin() + cardSecond);
         playerCard2.insert(playerCard2.begin() + cardSecond, tmp);
+        this->gameState.turn++;
+        this->gameState.turn %= 7;
     }
 };
 

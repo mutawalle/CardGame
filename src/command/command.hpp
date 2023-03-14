@@ -67,7 +67,6 @@ class Command {
                 Next next(this->gameState);
                 next.DoAction();
                 this->gameState = next.GetGameState();
-                command = "";
                 break;
             }
             case 1:
@@ -75,7 +74,6 @@ class Command {
                 Double dble(this->gameState);
                 dble.DoAction();
                 this->gameState = dble.GetGameState();
-                command = "";
                 break;
             }
             case 2:
@@ -83,7 +81,6 @@ class Command {
                 Half half(this->gameState);
                 half.DoAction();
                 this->gameState = half.GetGameState();
-                command = "";
                 break;
             }
             case 3:
@@ -97,7 +94,6 @@ class Command {
                     commandException err(" ", "re-roll", gameState.players.at(gameState.turn).getIsAbilityLess());
                     throw err;
                 }
-                command = "";
                 break;
             }
             case 4:
@@ -111,7 +107,6 @@ class Command {
                     commandException err(" ", "quadruple", gameState.players.at(gameState.turn).getIsAbilityLess());
                     throw err;
                 }
-                command = "";
                 break;
             }
             case 5:
@@ -125,7 +120,6 @@ class Command {
                     commandException err(" ", "quarter", gameState.players.at(gameState.turn).getIsAbilityLess());
                     throw err;
                 }
-                command = "";
                 break;
             }
             case 6:
@@ -139,7 +133,6 @@ class Command {
                     commandException err(" ", "reverseDirection", gameState.players.at(gameState.turn).getIsAbilityLess());
                     throw err;
                 }
-                command = "";
                 break;
             }
             case 7:
@@ -196,7 +189,6 @@ class Command {
                     commandException err(" ", "swap-card", gameState.players.at(gameState.turn).getIsAbilityLess());
                     throw err;
                 }
-                command = "";
                 break;
             }
             case 8:
@@ -230,7 +222,6 @@ class Command {
                     commandException err(" ", "switch", gameState.players.at(gameState.turn).getIsAbilityLess());
                     throw err;
                 }
-                command = "";
                 break;
             }
             case 9:
@@ -262,7 +253,6 @@ class Command {
                     commandException err(" ", "abillityLess", gameState.players.at(gameState.turn).getIsAbilityLess());
                     throw err;
                 }
-                command = "";
                 break;
             }
 
