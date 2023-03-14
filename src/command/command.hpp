@@ -29,6 +29,14 @@ class Command {
         Command(GameState gameState){
             this->gameState = gameState;
         }
+        
+        GameState getGamestate(){
+            return gameState;
+        }
+
+        void setGameState(GameState gameState){
+            this->gameState = gameState;
+        }
 
         void commandValidation(){
             cout<<"silahkan input command : ";
@@ -40,6 +48,7 @@ class Command {
                 throw err;
             }
         }
+
         void inputCommand(){
             bool valid = false;
             while(!valid){
@@ -53,12 +62,8 @@ class Command {
                 }
             }
         }
-        GameState getGamestate(){
-            return gameState;
-        }
-        void setGameState(GameState gameState){
-            this->gameState = gameState;
-        }
+
+
         void abillityValidation(){
             switch (commands[this->command])
             {
