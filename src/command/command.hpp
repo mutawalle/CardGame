@@ -146,12 +146,12 @@ class Command {
             {
                 if(gameState.players.at(gameState.turn).getAbility() == "swap-card"){
                     vector<Player> listTarget;
-                    for(int i = 0; i<gameState.players.size(); i++){
+                    for(size_t i = 0; i<gameState.players.size(); i++){
                         if(i != gameState.turn){
                             listTarget.push_back(gameState.players[i]);
                         }
                     }
-                    for(int i = 0; i<listTarget.size(); i++){
+                    for(size_t i = 0; i<listTarget.size(); i++){
                         cout << i+1<< listTarget[i].getName()<<endl;
                     }
                     cout << gameState.players.at(gameState.turn).getName() << " akan melakukan swap"<< endl;
@@ -163,7 +163,7 @@ class Command {
                         cin >> noPlayer1;
                     }
                     listTarget.erase(listTarget.begin() + noPlayer1-1);
-                    for(int i = 0; i<listTarget.size(); i++){
+                    for(size_t i = 0; i<listTarget.size(); i++){
                         cout << i+1<< listTarget[i].getName()<<endl;
                     }
                     cout << "Masukkan nomor urut pemain kedua yang ingin ditukar" << endl;
@@ -209,12 +209,12 @@ class Command {
                     cout << gameState.players.at(gameState.turn).getPlayerCard().getCard()[0].getNumber() << " " <<gameState.players.at(gameState.turn).getPlayerCard().getCard()[0].getColor() << endl;
                     cout << gameState.players.at(gameState.turn).getPlayerCard().getCard()[1].getNumber() << " " <<gameState.players.at(gameState.turn).getPlayerCard().getCard()[1].getColor() << endl;
                     cout << "Masukkan no pemain yang akan ditukar dengan Anda" << endl;
-                    for(int i = 0; i<gameState.players.size(); i++){
+                    for(size_t i = 0; i<gameState.players.size(); i++){
                         if(i != gameState.turn){
                             listTarget.push_back(gameState.players[i]);
                         }
                     }
-                    for(int i = 0; i<listTarget.size(); i++){
+                    for(size_t i = 0; i<listTarget.size(); i++){
                         cout << i+1<< listTarget[i].getName()<<endl;
                     }
                     cin >> noPlayer;
@@ -239,12 +239,12 @@ class Command {
                     vector<Player> listTarget;
                     cout << gameState.players.at(gameState.turn).getName() << " akan mematikan kartu ablity lawan!"<< endl;
                     cout << "silahkan pilih nomor pemain yang ingin dimatikan!"<< endl;
-                    for(int i = 0; i<gameState.players.size(); i++){
+                    for(size_t i = 0; i<gameState.players.size(); i++){
                         if(i != gameState.turn){
                             listTarget.push_back(gameState.players[i]);
                         }
                     }
-                    for(int i = 0; i<listTarget.size(); i++){
+                    for(size_t i = 0; i<listTarget.size(); i++){
                         cout << i+1<< listTarget[i].getName()<<endl;
                     }
                     int nomorTarget;

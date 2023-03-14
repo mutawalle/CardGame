@@ -72,7 +72,6 @@ class GameState {
             }
 
             cout << "Table Card" << endl;
-            int lTC = tableCard.getCard().size();
 
             cout << "Poin = " << point << endl;
 

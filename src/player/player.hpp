@@ -97,8 +97,8 @@ class Player {
         }
 
         void bubbleSort() {
-            for (int i = 0; i < playerCard.getCard().size() - 1; i++) {
-                for (int j = 0; j < playerCard.getCard().size()- i - 1; j++) {
+            for (size_t i = 0; i < playerCard.getCard().size() - 1; i++) {
+                for (size_t j = 0; j < playerCard.getCard().size()- i - 1; j++) {
                     if (playerCard.getCard()[j].getValue() > playerCard.getCard()[j+1].getValue()) {
                         Card temp = playerCard.getCard()[j];
                         playerCard.getCard()[j] = playerCard.getCard()[j+1];
@@ -110,7 +110,7 @@ class Player {
 
         Card getHighCard (){
             Card card = playerCard.getCard()[0];
-            for(int i = 1; i < playerCard.getCard().size(); i++){
+            for(size_t i = 1; i < playerCard.getCard().size(); i++){
                 if(card.getValue() < playerCard.getCard()[i].getValue()){
                     card = playerCard.getCard()[i];
                 }
@@ -120,8 +120,8 @@ class Player {
         vector<Card> PairCard (){
             int pairCount = 0;
             vector<Card> pair;
-            for(int i = 0; i < playerCard.getCard().size() -1 ; i++){
-                for(int j = i+1; j < playerCard.getCard().size(); j++){
+            for(size_t i = 0; i < playerCard.getCard().size() -1 ; i++){
+                for(size_t j = i+1; j < playerCard.getCard().size(); j++){
                     if(playerCard.getCard()[i].getNumber() == playerCard.getCard()[j].getNumber()){
                         pairCount += 1;
                         pair.push_back(playerCard.getCard()[i]);
@@ -149,7 +149,7 @@ class Player {
         vector<Card> straight (){
             vector<Card> straightVec;
             int idx=0,value=0;
-            for(int i=1;i<playerCard.getCard().size();i++){
+            for(size_t i=1;i<playerCard.getCard().size();i++){
                 if(playerCard.getCard()[i].getNumber()-playerCard.getCard()[i-1].getNumber()==0 || playerCard.getCard()[i].getNumber()-playerCard.getCard()[i-1].getNumber()==1){
                     value++;
                     // straightvec push
@@ -204,9 +204,9 @@ class Player {
             bool isFlush = false;
             vector<Card> FlushCard;
             string color;
-            for(int i = 0; i<playerCard.getCardListLength(); i++){
+            for(size_t i = 0; i<playerCard.getCardListLength(); i++){
                 int count = 0;
-                for(int j = i+1; j < playerCard.getCardListLength(); j++){
+                for(size_t j = i+1; j < playerCard.getCardListLength(); j++){
                     if(playerCard.getCard()[i].getColor() == playerCard.getCard()[j].getColor()){
                         count ++;
                     }
@@ -288,11 +288,11 @@ class Player {
             vector<int> temp;
             bool str = false;
             // int index = 0;
-            for(int i = 0; i <= playerCard.getCard().size()-5; i++){
+            for(size_t i = 0; i <= playerCard.getCard().size()-5; i++){
                 int count = 1;
                 vector<int> index;
                 index.push_back(i);
-                for(int j = i+1; j < playerCard.getCard().size(); j++){
+                for(size_t j = i+1; j < playerCard.getCard().size(); j++){
                     if(playerCard.getCard()[j].getValue()*10 - playerCard.getCard()[index[count-1]].getValue()*10 == 1){
                         count ++;
                         index.push_back(j);
@@ -309,7 +309,7 @@ class Player {
             }
             
             if(str){
-                for(int i = 0; i<temp.size(); i++){
+                for(size_t i = 0; i<temp.size(); i++){
                     SFCard.push_back(playerCard.getCard()[temp[i]]);
                 }
                 // for(int i = index ; i<index+5; i++){
