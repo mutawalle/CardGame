@@ -12,14 +12,15 @@ double doublePairCombo::getValue() const {
         if(number<cards[i].getNumber()){
             number=cards[i].getNumber();
         }
-        }
-        for(int i=0;i<cards.size();i++){
-            if(number==cards[i].getNumber()){
-                int temp_color=colors[cards[i].getColor()] + 1;
-                if(color_number<temp_color){
-                    color_number=temp_color;
-                }
+    }
+    for(int i=0;i<cards.size();i++){
+        if(number==cards[i].getNumber()){
+            int temp_color=colors[cards[i].getColor()];
+            if(color_number<temp_color){
+                color_number=temp_color;
             }
         }
-        return 2.7+(number-1)*0.1+color_number*0.03;
-    };
+    }
+    return 2.7+(number-1)*0.1+color_number*0.03;
+};
+
