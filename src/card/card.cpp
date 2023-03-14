@@ -1,5 +1,6 @@
 #include "card.hpp"
-#include "../enum/colors.hpp"
+
+map<string, int> colorsCard = {{"HIJAU", 0}, {"BIRU", 1}, {"KUNING", 2}, {"MERAH", 3}};
 
 Card::Card() {
     this->number = 0;
@@ -16,7 +17,7 @@ Card::Card(int number, string color, double value) {
 Card::Card(int number, string color) {
     this->number = number;
     this->color = color;
-    double toValue = (double) number / 10 + colors[color] * 3 / 100;
+    double toValue = (double) number / 10 + colorsCard[color] * 3 / 100;
     this->value = toValue;
 }
 

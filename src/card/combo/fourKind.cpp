@@ -1,5 +1,4 @@
 #include "fourKind.hpp"
-#include "../../enum/colors.hpp"
 
 fourKindCombo::fourKindCombo(vector<Card> cards){
     this->cards=cards;

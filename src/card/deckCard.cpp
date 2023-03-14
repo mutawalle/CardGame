@@ -1,16 +1,17 @@
 #include "deckCard.hpp"
-#include "../enum/colors.hpp"
 
 using namespace std;
 
-const int colorSize = colors.size();
+map<string, int> colorsDeckCard = {{"HIJAU", 0}, {"BIRU", 1}, {"KUNING", 2}, {"MERAH", 3}};
+
+const int colorSize = colorsDeckCard.size();
 
 DeckCard::DeckCard() {
     this->cardList = {};
     for (int i = 1; i < 14; i++) {
         for (int j = 0; j < colorSize; j++) {
             double curValue = ((double) i / 10) + ((double) j * 3 / 100);
-            Card temp(i, next(colors.begin(),j)->first, curValue);
+            Card temp(i, next(colorsDeckCard.begin(),j)->first, curValue);
             this->cardList.push_back(temp);
         }
     }

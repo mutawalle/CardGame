@@ -4,10 +4,13 @@
 #include <cmath>
 #include <vector>
 #include <string>
+#include <map>
 
 #include "gameState.hpp"
 #include "../command/command.hpp"
-#include "../enum/abilities.hpp"
+
+
+vector<string> abilities = {"RE-ROLL", "QUADRUPLE", "QUARTER", "REVERSE", "SWAP", "SWITCH", "ABILITYLESS"};
 
 using namespace std;
 
@@ -80,8 +83,10 @@ class Game {
 
             if(this->round == 6){
                 int winner6Idx=0;
-                for(int i=0;i<7;i++){
-                    if(this->gameState.players.at(i).value() > this->gameState.players.at(winner6Idx).value()){
+                this->gameState.players.at(winner6Idx).setValue();
+                for(int i=1;i<7;i++){
+                    this->gameState.players.at(i).setValue();
+                    if(this->gameState.players.at(i) > this->gameState.players.at(winner6Idx)){
                         winner6Idx = i;
                     }
                 }
