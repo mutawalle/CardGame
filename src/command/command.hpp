@@ -142,16 +142,50 @@ class Command {
             case 7:
             {
                 if(gameState.players.at(gameState.turn).getAbility() == "swap-card"){
+                    vector<Player> listTarget;
+                    for(int i = 0; i<gameState.players.size(); i++){
+                        if(i != gameState.turn){
+                            listTarget.push_back(gameState.players[i]);
+                        }
+                    }
+                    for(int i = 0; i<listTarget.size(); i++){
+                        cout << i+1<< listTarget[i].getName()<<endl;
+                    }
+                    cout << gameState.players.at(gameState.turn).getName() << " akan melakukan swap"<< endl;
                     int noPlayer1, noPlayer2, noKartu1, noKartu2;
                     cout << "Masukkan nomor urut pemain pertama yang ingin ditukar" << endl;
                     cin >> noPlayer1;
+                    while(noPlayer1 < 1 || noPlayer1 >6){
+                        cout << "input tidak valid!! ulangi "<<endl;
+                        cin >> noPlayer1;
+                    }
+                    listTarget.erase(listTarget.begin() + noPlayer1-1);
+                    for(int i = 0; i<listTarget.size(); i++){
+                        cout << i+1<< listTarget[i].getName()<<endl;
+                    }
                     cout << "Masukkan nomor urut pemain kedua yang ingin ditukar" << endl;
                     cin >> noPlayer2;
+                    while(noPlayer2 < 1 || noPlayer2 >6){
+                        cout << "input tidak valid!! ulangi "<<endl;
+                        cin >> noPlayer2;
+                    }
                     cout << "Pilih kiri atau kanan dari pemain pertama" << endl;
+                    cout << "1. Kanan"<<endl;
+                    cout << "2. Kiri"<< endl;
                     cin >> noKartu1;
+                    while(noKartu1 <1 && noKartu1 > 2){
+                        cout << "input tidak valid!! ulangi "<<endl;
+                        cin >> noKartu1;
+                    }
                     cout << "Pilih kiri atau kanan dari pemain kedua" << endl;
+                    cout << "1. Kanan"<<endl;
+                    cout << "2. Kiri"<< endl;
                     cin >> noKartu2;
-                    SwapCard swapCard(this->gameState, noPlayer1, noPlayer2, noKartu1, noKartu2);
+                    while(noKartu2 <1 && noKartu2 > 2){
+                        cout << "input tidak valid!! ulangi "<<endl;
+                        cin >> noKartu2;
+                    }
+                    SwapCard swapCard(this->gameState, noPlayer1-1, noPlayer2-1, noKartu1-1, noKartu2-1);
                     swapCard.DoAction();
                 }
                 else{
@@ -164,9 +198,26 @@ class Command {
             {
                 if(gameState.players.at(gameState.turn).getAbility() == "switch"){
                     int noPlayer;
+                    vector<Player> listTarget;
+                    cout << gameState.players.at(gameState.turn).getName() << " akan melakukan switch"<< endl;
+                    cout << "Kartu sekarang adalah : "<< endl;
+                    cout << gameState.players.at(gameState.turn).getPlayerCard().getCard()[0].getNumber() << " " <<gameState.players.at(gameState.turn).getPlayerCard().getCard()[0].getColor() << endl;
+                    cout << gameState.players.at(gameState.turn).getPlayerCard().getCard()[1].getNumber() << " " <<gameState.players.at(gameState.turn).getPlayerCard().getCard()[1].getColor() << endl;
                     cout << "Masukkan no pemain yang akan ditukar dengan Anda" << endl;
+                    for(int i = 0; i<gameState.players.size(); i++){
+                        if(i != gameState.turn){
+                            listTarget.push_back(gameState.players[i]);
+                        }
+                    }
+                    for(int i = 0; i<listTarget.size(); i++){
+                        cout << i+1<< listTarget[i].getName()<<endl;
+                    }
                     cin >> noPlayer;
-                    Switch swit = Switch(this->gameState, noPlayer);
+                    while(noPlayer < 1 || noPlayer >6){
+                        cout << "input tidak valid!! ulangi "<<endl;
+                        cin >> noPlayer;
+                    }
+                    Switch swit = Switch(this->gameState, noPlayer-1);
                     swit.DoAction();
                 }
                 else{
@@ -185,7 +236,6 @@ class Command {
                         if(i != gameState.turn){
                             listTarget.push_back(gameState.players[i]);
                         }
-                        cout << i+1<< gameState.players[i].getName()<<endl;
                     }
                     for(int i = 0; i<listTarget.size(); i++){
                         cout << i+1<< listTarget[i].getName()<<endl;
