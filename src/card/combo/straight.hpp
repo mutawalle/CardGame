@@ -1,5 +1,7 @@
 #include "../abstractValue.hpp"
 #include "../card.hpp"
+#include "../../enum/colors.hpp"
+
 #include <vector>
 //salah
 class straightCombo :public AbstractValue {
@@ -20,18 +22,8 @@ class straightCombo :public AbstractValue {
                     idx=i;
                 }
             }
-            if(cards[idx].getColor()=="Hijau"){
-                color_number=1;
-            }
-            if(cards[idx].getColor()=="Biru"){
-                color_number=2;
-            }
-            if(cards[idx].getColor()=="Kuning"){
-                color_number=3;
-            }
-            if(cards[idx].getColor()=="Merah"){
-                color_number=4;
-            }
+
+            color_number = colors[cards[idx].getColor()] + 1;
             return 5.3+(number-1)*0.1+(color_number-1)*0.03;
         };
 };

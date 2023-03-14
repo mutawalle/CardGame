@@ -1,16 +1,15 @@
 #ifndef GAME_H
 #define GAME_H
-#include "gameState.hpp"
 
 #include <cmath>
 #include <vector>
 #include <string>
 
+#include "gameState.hpp"
 #include "../command/command.hpp"
+#include "../enum/abilities.hpp"
 
 using namespace std;
-
-vector<string> abilities = {"re-roll", "quadruple", "quarter", "reverse", "swap", "switch", "abilityless"}; 
 
 class Game {
     private:
@@ -45,10 +44,11 @@ class Game {
         }
 
         void splitAbilities(){
+            vector<string> listAbility = abilities;
             for(int i=7;i>0;i--){
                 int randVal = rand() % i;
-                gameState.players[8-i].getAbility() = abilities[randVal];
-                abilities.erase(abilities.begin() + randVal);
+                gameState.players[8-i].getAbility() = listAbility[randVal];
+                listAbility.erase(listAbility.begin() + randVal);
             }
         }
 

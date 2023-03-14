@@ -16,12 +16,10 @@
 #include "../ability/swap_card.hpp"
 #include "../ability/switch.hpp"
 
+#include "../enum/commands.hpp"
 
 using namespace std;
 
-map<string, int> listCommand = {{"RE-ROLL", 3}, {"QUADRUPLE", 4}, {"QUARTER", 5}, {"REVERSE", 6}, {"SWAP",7}, {"SWITCH", 8}, {"ABILITYLESS", 9},
-                                {"NEXT", 0}, {"DOUBLE", 2}, {"HALF", 1}};
-// vector<string> listCommand = {"re-roll", "quadruple", "quarter", "reverse", "swap", "switch", "abilityless", "next", "double", "half"};
 class Command {
     private:
         GameState gameState;
@@ -35,8 +33,8 @@ class Command {
             cout<<"silahkan input command : ";
             cin >> command;
             cout << endl;
-            auto In = listCommand.find(command);
-            if(In == listCommand.end()){
+            auto In = commands.find(command);
+            if(In == commands.end()){
                 commandException err(command, " ", gameState.players.at(gameState.turn).getIsAbilityLess());
                 throw err;
             }
@@ -73,7 +71,7 @@ class Command {
             this->gameState = gameState;
         }
         void abillityValidation(){
-            switch (listCommand[command])
+            switch (commands[this->command])
             {
             case 0:
             {
