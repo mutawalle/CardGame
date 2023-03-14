@@ -13,7 +13,7 @@ flushCombo::flushCombo(vector<Card> cards){
 double flushCombo::getValue() const {
     int color_number=colors[cards[0].getColor()];
     int number=0;
-    for(int i=0;i<cards.size();i++){
+    for(size_t i=0;i<cards.size();i++){
         if(number<cards[i].getNumber()){
             number=cards[i].getNumber();
         }

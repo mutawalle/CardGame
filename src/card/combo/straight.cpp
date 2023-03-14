@@ -15,7 +15,7 @@ double straightCombo::getValue() const {
     int number=0;
     int idx=0;
     
-    for(int i=0;i<cards.size();i++){
+    for(size_t i=0;i<cards.size();i++){
         if(number<cards[i].getNumber()){
             number=cards[i].getNumber();
             idx=i;

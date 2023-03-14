@@ -1,4 +1,4 @@
-#include "PlayerCard.hpp"
+#include "playerCard.hpp"
 
 PlayerCard::PlayerCard() : InventoryHolder() {}
 
