@@ -1,5 +1,10 @@
 #include "straight.hpp"
-#include "../../enum/colors.hpp"
+#include <map>
+#include <string>
+
+using namespace std;
+
+map<string, int> colorsStraight = {{"HIJAU", 0}, {"BIRU", 1}, {"KUNING", 2}, {"MERAH", 3}};
 
 straightCombo::straightCombo(vector<Card> cards){
     this->cards=cards;
@@ -17,7 +22,7 @@ double straightCombo::getValue() const {
         }
     }
 
-    color_number = colors[cards[idx].getColor()];
+    color_number = colorsStraight[cards[idx].getColor()];
     return 5.3+(number-1)*0.1+color_number*0.03;
 };
 // 3H 4B 5H 6B 7H

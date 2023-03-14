@@ -16,9 +16,10 @@
 #include "../ability/swap_card.hpp"
 #include "../ability/switch.hpp"
 
-#include "../enum/commands.hpp"
 
 using namespace std;
+
+map<string, int> commands = {{"NEXT", 0}, {"HALF", 1}, {"DOUBLE", 2}, {"RE-ROLL", 3}, {"QUADRUPLE", 4}, {"QUARTER", 5}, {"REVERSE", 6}, {"SWAP",7}, {"SWITCH", 8}, {"ABILITYLESS", 9}};
 
 class Command {
     private:

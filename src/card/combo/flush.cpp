@@ -1,5 +1,10 @@
 #include "flush.hpp"
-#include "../../enum/colors.hpp"
+#include <map>
+#include <string>
+
+using namespace std;
+
+map<string, int> colors = {{"HIJAU", 0}, {"BIRU", 1}, {"KUNING", 2}, {"MERAH", 3}};
 
 flushCombo::flushCombo(vector<Card> cards){
     this->cards=cards;

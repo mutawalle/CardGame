@@ -1,5 +1,10 @@
 #include "fullHouse.hpp"
-#include "../../enum/colors.hpp"
+#include <map>
+#include <string>
+
+using namespace std;
+
+map<string, int> colorsFullHouse = {{"HIJAU", 0}, {"BIRU", 1}, {"KUNING", 2}, {"MERAH", 3}};
 
 fullHouseCombo::fullHouseCombo(vector<Card> cards){
     this->cards=cards;
@@ -30,7 +35,7 @@ double fullHouseCombo::getValue() const {
     int color_number=0;
     for(int i=0;i<cards.size();i++){
         if(highest_number==cards[i].getNumber()){
-            int temp_color=colors[cards[i].getColor()];
+            int temp_color=colorsFullHouse[cards[i].getColor()];
             if(color_number<temp_color){
                 color_number=temp_color;
             }
