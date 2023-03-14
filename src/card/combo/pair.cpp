@@ -13,7 +13,6 @@ PairCombo::PairCombo(vector<Card> cards){
 double PairCombo::getValue() const {
     int number=cards[0].getNumber();
     int color_number=0;
-    double res;
     if(colorsPair[cards[0].getColor()] > colorsPair[cards[1].getColor()]){
         color_number=colorsPair[cards[0].getColor()];
     }else{

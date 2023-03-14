@@ -13,7 +13,7 @@ straightFlushCombo::straightFlushCombo(vector<Card> cards){
 double straightFlushCombo::getValue() const {
     int color_number=colorsStraightFlush[cards[0].getColor()];
     int number=0;
-    for(int i=0;i<cards.size();i++){
+    for(size_t i=0;i<cards.size();i++){
         if(number<cards[i].getNumber()){
             number=cards[i].getNumber();
         }

@@ -17,7 +17,7 @@ double fullHouseCombo::getValue() const {
     n02=0;
     cnt1=1;
     cnt2=0;
-    for(int i=0;i<cards.size();i++){
+    for(size_t i=0;i<cards.size();i++){
         if(cards[i].getNumber()==n01){
             cnt1++;
         }
@@ -33,7 +33,7 @@ double fullHouseCombo::getValue() const {
         highest_number=n02;
     }
     int color_number=0;
-    for(int i=0;i<cards.size();i++){
+    for(size_t i=0;i<cards.size();i++){
         if(highest_number==cards[i].getNumber()){
             int temp_color=colorsFullHouse[cards[i].getColor()];
             if(color_number<temp_color){
