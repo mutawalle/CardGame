@@ -14,6 +14,7 @@ class PlayerCard: public virtual InventoryHolder {
         PlayerCard(vector<Card>);
         PlayerCard(const PlayerCard&);
         ~PlayerCard();
+        PlayerCard& operator=(const PlayerCard&);
         virtual void operator+(const Card&);
         virtual void operator-(const Card&);
 };

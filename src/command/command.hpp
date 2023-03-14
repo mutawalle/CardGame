@@ -19,7 +19,7 @@
 
 using namespace std;
 
-map<string, int> commands = {{"NEXT", 0}, {"HALF", 1}, {"DOUBLE", 2}, {"RE-ROLL", 3}, {"QUADRUPLE", 4}, {"QUARTER", 5}, {"REVERSE", 6}, {"SWAP",7}, {"SWITCH", 8}, {"ABILITYLESS", 9}};
+map<string, int> commands = {{"NEXT", 0}, {"DOUBLE", 1}, {"HALF", 2}, {"RE-ROLL", 3}, {"QUADRUPLE", 4}, {"QUARTER", 5}, {"REVERSE", 6}, {"SWAP",7}, {"SWITCH", 8}, {"ABILITYLESS", 9}};
 
 class Command {
     private:
@@ -39,18 +39,6 @@ class Command {
                 commandException err(command, " ", gameState.players.at(gameState.turn).getIsAbilityLess());
                 throw err;
             }
-            // bool isIn = false;
-            // for(int i = 0; i < listCommand.size(); i++){
-            //     if(command == listCommand[i]){
-            //         isIn = true;
-            //         break;
-            //     }
-            // }
-            // if(!isIn){
-            //     commandException err(command, " ");
-            //     throw err;
-
-            // }
         }
         void inputCommand(){
             bool valid = false;
@@ -78,18 +66,24 @@ class Command {
             {
                 Next next(this->gameState);
                 next.DoAction();
+                this->gameState = next.GetGameState();
+                command = "";
                 break;
             }
             case 1:
             {
                 Double dble(this->gameState);
                 dble.DoAction();
+                this->gameState = dble.GetGameState();
+                command = "";
                 break;
             }
             case 2:
             {
                 Half half(this->gameState);
                 half.DoAction();
+                this->gameState = half.GetGameState();
+                command = "";
                 break;
             }
             case 3:
@@ -97,11 +91,13 @@ class Command {
                 if(gameState.players.at(gameState.turn).getAbility() == "re-roll"){
                     ReRoll reRoll(this->gameState);
                     reRoll.DoAction();
+                    this->gameState = reRoll.GetGameState();
                 }
                 else{
                     commandException err(" ", "re-roll", gameState.players.at(gameState.turn).getIsAbilityLess());
                     throw err;
                 }
+                command = "";
                 break;
             }
             case 4:
@@ -109,11 +105,13 @@ class Command {
                 if(gameState.players.at(gameState.turn).getAbility() == "quadruple"){
                     Quadruple quadruple(this->gameState);
                     quadruple.DoAction();
+                    this->gameState = quadruple.GetGameState();
                 }
                 else{
                     commandException err(" ", "quadruple", gameState.players.at(gameState.turn).getIsAbilityLess());
                     throw err;
                 }
+                command = "";
                 break;
             }
             case 5:
@@ -121,11 +119,13 @@ class Command {
                 if(gameState.players.at(gameState.turn).getAbility() == "quarter"){
                     Quarter quarter(this->gameState);
                     quarter.DoAction();
+                    this->gameState = quarter.GetGameState();
                 }
                 else{
                     commandException err(" ", "quarter", gameState.players.at(gameState.turn).getIsAbilityLess());
                     throw err;
                 }
+                command = "";
                 break;
             }
             case 6:
@@ -133,11 +133,13 @@ class Command {
                 if(gameState.players.at(gameState.turn).getAbility() == "reverseDirection"){
                     ReverseDirection reverseDirection(this->gameState);
                     reverseDirection.DoAction();
+                    this->gameState = reverseDirection.GetGameState();
                 }
                 else{
                     commandException err(" ", "reverseDirection", gameState.players.at(gameState.turn).getIsAbilityLess());
                     throw err;
                 }
+                command = "";
                 break;
             }
             case 7:
@@ -154,11 +156,13 @@ class Command {
                     cin >> noKartu2;
                     SwapCard swapCard(this->gameState, noPlayer1, noPlayer2, noKartu1, noKartu2);
                     swapCard.DoAction();
+                    this->gameState = swapCard.GetGameState();
                 }
                 else{
                     commandException err(" ", "swap-card", gameState.players.at(gameState.turn).getIsAbilityLess());
                     throw err;
                 }
+                command = "";
                 break;
             }
             case 8:
@@ -169,11 +173,13 @@ class Command {
                     cin >> noPlayer;
                     Switch swit = Switch(this->gameState, noPlayer);
                     swit.DoAction();
+                    this->gameState = swit.GetGameState();
                 }
                 else{
                     commandException err(" ", "switch", gameState.players.at(gameState.turn).getIsAbilityLess());
                     throw err;
                 }
+                command = "";
                 break;
             }
             case 9:
@@ -200,11 +206,13 @@ class Command {
 
                     AbilityLess abilityLess = AbilityLess(this->gameState, nomorTarget-1);
                     abilityLess.DoAction(); 
+                    this->gameState = abilityLess.GetGameState();
                 }
                 else{
                     commandException err(" ", "abillityLess", gameState.players.at(gameState.turn).getIsAbilityLess());
                     throw err;
                 }
+                command = "";
                 break;
             }
 

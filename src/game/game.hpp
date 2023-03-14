@@ -37,11 +37,13 @@ class Game {
             int j = 0;
             for(int i=52;i>38;i--){
                 int randVal = rand() % i;
-                vector<Card> pCards = gameState.players[j%7].getPlayerCard().getCard();
-                vector<Card> dCards = gameState.deckCard.getCard();
+                Card tmp = this->gameState.deckCard.getCard()[randVal];
+                PlayerCard playerCard = this->gameState.players[j%7].getPlayerCard();
+                
+                playerCard + tmp;
+                this->gameState.deckCard - tmp;
 
-                pCards.insert(pCards.end(), gameState.deckCard.getCard()[randVal]);
-                dCards.erase(dCards.begin() + randVal);
+                this->gameState.players[j%7].setPlayerCard(playerCard);
                 j++;
             }
         }

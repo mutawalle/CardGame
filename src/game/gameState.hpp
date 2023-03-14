@@ -65,8 +65,9 @@ class GameState {
                 cout << "Player ke-" << i+1 << endl;
                 vector<Card> pC = players.at(i).getPlayerCard().getCard();
                 int lPC = pC.size();
-                for(int j;j<lPC;j++){
-                    cout << pC.at(j).getColor() << " " << pC.at(j).getColor() << endl;
+                cout << lPC << endl;
+                for(int j=0;j<lPC;j++){
+                    cout << pC.at(j).getColor() << " " << pC.at(j).getNumber() << endl;
                 }
             }
 
