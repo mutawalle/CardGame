@@ -57,9 +57,7 @@ class GameState {
         void printState(){
             cout << "DeckCard" << endl;
             int lDC = deckCard.getCard().size();
-            for(int i=0;i<lDC;i++){
-                cout << deckCard.getCard().at(i).getColor() << " " << deckCard.getCard().at(i).getNumber() << endl;
-            }
+            cout << "ukuran deckCard " << lDC << endl;
 
             cout << "Players" << endl;
             int lP = players.size();
@@ -74,9 +72,6 @@ class GameState {
 
             cout << "Table Card" << endl;
             int lTC = tableCard.getCard().size();
-            for(int i=0;i<lTC;i++){
-                cout << tableCard.getCard().at(i).getColor() << " " << tableCard.getCard().at(i).getColor() << endl;
-            }
 
             cout << "Poin = " << point << endl;
 
@@ -84,11 +79,10 @@ class GameState {
             for(int i=0;i<7;i++){
                 cout << order.at(i) << " ";
             }
+            cout << endl;
 
             cout << "Giliran siapa" << endl;
             cout << turn << endl;
-
-            cout << "Bisa ability?" << endl;
         }
 };
 

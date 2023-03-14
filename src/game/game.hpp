@@ -79,6 +79,7 @@ class Game {
                 command.inputCommand();
                 command.abillityValidation();
                 this->gameState = command.getGamestate();
+                this->gameState.printState();
             }
 
             if(this->round == 6){
