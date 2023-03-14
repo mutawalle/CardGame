@@ -27,6 +27,7 @@ class Player {
         string ability;
         long long int point;
         bool isAbilityLess;
+        double value;
     public:
         Player(): playerCard(){
             name = "";
@@ -348,37 +349,49 @@ class Player {
             // }
             // return SFCard;
         }
-        double value(){
+        void setValue(){
             sorting();
             if(straightFlush().size() == 5){
-                return straightFlushCombo(straightFlush()).getValue();
+                this->value = straightFlushCombo(straightFlush()).getValue();
             }
             else if(FourOfKind().size() == 4){
-                return fourKindCombo(FourOfKind()).getValue();
+                this->value = fourKindCombo(FourOfKind()).getValue();
             }
             else if(FullHouse().size() == 5){
-                return fullHouseCombo(FullHouse()).getValue();
+                this->value = fullHouseCombo(FullHouse()).getValue();
             }
             else if(Flush().size() == 5 ){
-                return flushCombo(Flush()).getValue();
+                this->value = flushCombo(Flush()).getValue();
             }
             else if(straight().size() == 5){
-                return straightCombo(straight()).getValue();
+                this->value = straightCombo(straight()).getValue();
             }
             else if(threeOfKind().size() == 3){
-                return threeKindCombo(threeOfKind()).getValue();
+                this->value = threeKindCombo(threeOfKind()).getValue();
             }
             else if(PairCard().size() == 4){
-                return doublePairCombo(PairCard()).getValue();
+                this->value = doublePairCombo(PairCard()).getValue();
             }
             else if(PairCard().size() == 2){
-                return PairCombo(PairCard()).getValue();
+                this->value = PairCombo(PairCard()).getValue();
             }
             else{
                 vector<Card> high;
                 high.push_back(getHighCard());
-                return high[0].getValue();
+                this->value = high[0].getValue();
             }
+        }
+
+        bool operator>(const Player& other) {
+            return this->value > other.value;
+        }
+
+        bool operator<(const Player& other) {
+            return this->value < other.value;
+        }
+
+        bool operator==(const Player& other) {
+            return this->value == other.value;
         }
 };
 
