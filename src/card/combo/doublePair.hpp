@@ -1,3 +1,7 @@
+#ifndef DOUBLEPAIR_HPP
+#define DOUBLEPAIR_HPP
+
+
 #include "../abstractValue.hpp"
 #include "../card.hpp"
 
@@ -10,3 +14,5 @@ class doublePairCombo :public AbstractValue {
         doublePairCombo(vector<Card> cards);
         double getValue() const override;
 };
+
+#endif

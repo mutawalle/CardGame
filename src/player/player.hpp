@@ -14,7 +14,6 @@
 #include "../card/combo/straight.hpp"
 #include "../card/combo/straightFlush.hpp"
 #include "../card/combo/threeKind.hpp"
-#include "../card/combo/twoPair.hpp"
 
 #include <bits/stdc++.h>
 

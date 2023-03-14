@@ -1,11 +1,11 @@
-#include "flush.hpp"
+#include "straightFlush.hpp"
 #include "../../enum/colors.hpp"
 
-flushCombo::flushCombo(vector<Card> cards){
+straightFlushCombo::straightFlushCombo(vector<Card> cards){
     this->cards=cards;
 }
 
-double flushCombo::getValue() const {
+double straightFlushCombo::getValue() const {
     int color_number=colors[cards[0].getColor()];
     int number=0;
     for(int i=0;i<cards.size();i++){
@@ -14,7 +14,7 @@ double flushCombo::getValue() const {
         }
     }
     
-    return 6.6+(number-1)*0.1+color_number*0.03;
+    return 10.5+(number-1)*0.1+(color_number)*0.03;
 };
 
-// 3H 4H 10H 12H 13H
+// 3H 4H 5H 6H 7H
