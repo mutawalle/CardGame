@@ -38,12 +38,61 @@ class Command {
             this->gameState = gameState;
         }
 
+        void inputFile(){
+            vector<string> colors = {"HIJAU", "MERAH", "KUNING", "BIRU"};
+            vector<string> abilities = {"RE-ROLL", "QUADRUPLE", "QUARTER", "REVERSE", "SWAP","SWITCH", "ABILITYLESS"};
+            string namaFile;
+            cin >> namaFile;
+            string myText;
+
+            ifstream MyReadFile(namaFile+".txt");
+
+            for(int i=0;i<52;i++){
+                vector<string> words = {};
+                string word;
+                getline (MyReadFile, myText);
+                stringstream ss(myText);
+
+                while(ss >> word){
+                    words.push_back(word);
+                }
+
+                if(words.size() != 2 || find(colors.begin(), colors.end(), words.at(0)) == colors.end() || stoi(words.at(1))>0 && stoi(words.at(1))<14){
+                    //exceptionS
+                }else{
+                    Card tmp(stoi(words.at(1)), words.at(0));
+                    this->gameState.deckCard + tmp;
+                }
+            }
+            for(int i=0;i<7;i++){
+                vector<string> words = {};
+                string word;
+                getline (MyReadFile, myText);
+                stringstream ss(myText);
+
+                while(ss >> word){
+                    words.push_back(word);
+                }
+
+                if(words.size() != 1 || find(abilities.begin(), abilities.end(), words.at(0)) == abilities.end()){
+                    //exception
+                }else{
+                    this->gameState.players.at(i).setAbility(words.at(0));
+                }
+            }
+
+            MyReadFile.close();
+        }
+
         void chooseSplitingCard(){
-            string tmp;
+            int tmp;
             cout << "Silakan memilih metode pembagian kartu: " << endl;
             cout << "1. Random" << endl;
             cout << "2. File" << endl;
             cin >> tmp;
+            if(tmp == 2){
+                inputFile();
+            }
         }
 
         void inputName(){

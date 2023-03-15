@@ -1,4 +1,5 @@
 #include "deckCard.hpp"
+#include <random>
 
 using namespace std;
 
@@ -15,6 +16,11 @@ DeckCard::DeckCard() {
             this->cardList.push_back(temp);
         }
     }
+    vector<Card> tmpCardList = this->cardList;
+    random_device rd;
+    mt19937 g(rd());
+    shuffle(tmpCardList.begin(),tmpCardList.end(), g);
+    this->cardList = tmpCardList;
 }
 
 DeckCard::DeckCard(vector<Card> cl) : InventoryHolder(cl){

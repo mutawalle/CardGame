@@ -33,18 +33,21 @@ class Player {
             ability = "";
             point = 0;
             isAbilityLess = false;
+            value = 0;
         }
-        Player(string _name, PlayerCard pc, string _abillity, long long int _poin): playerCard(pc){
+        Player(string _name, PlayerCard pc, string _abillity, long long int _poin, double _value): playerCard(pc){
             name = _name;
             ability = _abillity;
             point = _poin;
             isAbilityLess = false;
+            value = _value;
         }
         Player(const Player& other): playerCard(other.playerCard){
             name = other.name;
             ability = other.ability;
             point = other.point;
             isAbilityLess = other.isAbilityLess;
+            value = other.value;
         }
 
         PlayerCard getPlayerCard (){
@@ -73,6 +76,10 @@ class Player {
 
         void setPoint(long long int point){
             this->point = point;
+        }
+
+        double getValue(){
+            return this->value;
         }
 
         string getName (){
@@ -384,8 +391,12 @@ class Player {
         bool operator>(Player& other) {
             if(this->value == other.value){
                 double player1, player2;
-                vector<Card> player1Cards(this->getPlayerCard().getCard().begin(), this->getPlayerCard().getCard().begin()+2);
-                vector<Card> player2Cards(other.getPlayerCard().getCard().begin(), other.getPlayerCard().getCard().begin()+2);
+                vector<Card> player1Cards = this->getPlayerCard().getCard();
+                vector<Card> player2Cards = other.getPlayerCard().getCard();
+
+                player1Cards.erase(player1Cards.begin()+2, player1Cards.end());
+                player2Cards.erase(player2Cards.begin()+2, player2Cards.end());
+
                 //Player 1
                 if(player1Cards.at(0).getNumber() == player1Cards.at(1).getNumber()){
                     player1 = PairCombo(player1Cards).getValue();
@@ -416,8 +427,12 @@ class Player {
         bool operator<(Player& other) {
             if(this->value == other.value){
                 double player1, player2;
-                vector<Card> player1Cards(this->getPlayerCard().getCard().begin(), this->getPlayerCard().getCard().begin()+2);
-                vector<Card> player2Cards(other.getPlayerCard().getCard().begin(), other.getPlayerCard().getCard().begin()+2);
+                vector<Card> player1Cards = this->getPlayerCard().getCard();
+                vector<Card> player2Cards = other.getPlayerCard().getCard();
+
+                player1Cards.erase(player1Cards.begin()+2, player1Cards.end());
+                player2Cards.erase(player2Cards.begin()+2, player2Cards.end());
+
                 //Player 1
                 if(player1Cards.at(0).getNumber() == player1Cards.at(1).getNumber()){
                     player1 = PairCombo(player1Cards).getValue();

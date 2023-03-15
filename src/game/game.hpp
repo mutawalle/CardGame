@@ -41,17 +41,15 @@ class Game {
         }
 
         void splitCards(){
-            int j = 0;
-            for(int i=52;i>38;i--){
-                int randVal = rand() % i;
-                Card tmp = this->gameState.deckCard.getCard()[randVal];
-                PlayerCard playerCard = this->gameState.players[j%7].getPlayerCard();
+            for(int i=0;i<14;i++){
+                PlayerCard playerCard = this->gameState.players.at((int) i/2).getPlayerCard();
+                vector<Card> deckCards = this->gameState.deckCard.getCard();
 
-                playerCard + tmp;
-                this->gameState.deckCard - tmp;
+                playerCard + deckCards.at(i);
+                deckCards.erase(deckCards.begin());
 
-                this->gameState.players[j%7].setPlayerCard(playerCard);
-                j++;
+                this->gameState.players.at((int) i/2).setPlayerCard(playerCard);
+                this->gameState.deckCard.setCard(deckCards);
             }
         }
 
@@ -102,22 +100,24 @@ class Game {
                     }
                 }
 
-                // Kuranggggggg
-                Player winner;
+                for(int i=0;i<7;i++){
+                    this->gameState.players.at(i).setValue();
+                }
 
-                vector<Player> listPlayer = this->gameState.players;
-                winner = getMax<Player>(listPlayer);
+                Player winner = getMax(this->gameState.players);
+                cout << winner.getValue() << endl;
 
-                int winnerIdx =  distance(listPlayer.begin(), find(listPlayer.begin(), listPlayer.end(), winner));
+                int winnerIdx = distance(find(this->gameState.players.begin(), this->gameState.players.end(), winner), this->gameState.players.begin());
 
                 this->gameState.players.at(winnerIdx).setPoint(this->gameState.players.at(winnerIdx).getPoint() + this->gameState.point);
-
+                
                 int winnerAllIdx = 0;
                 for(int i=0;i<7;i++){
                     if(this->gameState.players.at(i).getPoint() > this->gameState.players.at(winnerAllIdx).getPoint()){
                         winnerAllIdx = i;
                     }
                 }
+
 
                 if(this->gameState.players.at(winnerAllIdx).getPoint() >= pow(2,32)){
                     this->isFinish = true;
@@ -131,13 +131,15 @@ class Game {
                     this->gameState.point = 64;
                     this->gameState.order = {0,1,2,3,4,5,6};
                     this->gameState.turn = 0;
+                    this->round = 0;
                 }
             }
         }
 
         template <class T>
-        T getMax(vector<T> listData){
+        T getMax(vector<T>& listData){
             int len;
+            len = listData.size();
             T max = listData.at(0);
             for(int i=1;i<len;i++){
                 if(listData.at(i)>max){
