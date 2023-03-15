@@ -5,6 +5,7 @@
 #include <vector>
 #include <string>
 #include <map>
+#include <time.h>
 
 #include "gameState.hpp"
 #include "../command/command.hpp"
@@ -55,6 +56,7 @@ class Game {
 
         void splitAbilities(){
             for(int i=7;i>0;i--){
+                srand(time(nullptr));
                 int randVal = rand() % i;
                 gameState.players[7-i].setAbility(abilities[randVal]);
                 abilities.erase(abilities.begin() + randVal);

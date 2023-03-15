@@ -20,8 +20,8 @@ public:
     void DoAction() {
         PlayerCard cl1 = this->gameState.players.at(this->gameState.order.at(this->gameState.turn)).getPlayerCard();
         PlayerCard cl2 = this->gameState.players.at(this->target).getPlayerCard();
-        this->gameState.players.at(this->target).setPlayerCard(cl2);
-        this->gameState.players.at(this->gameState.order.at(this->gameState.turn)).setPlayerCard(cl1);
+        this->gameState.players.at(this->target).setPlayerCard(cl1);
+        this->gameState.players.at(this->gameState.order.at(this->gameState.turn)).setPlayerCard(cl2);
         this->gameState.turn++;
         this->gameState.turn %= 7;
     }

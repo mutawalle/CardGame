@@ -1,5 +1,6 @@
 #include "deckCard.hpp"
 #include <random>
+#include <time.h>
 
 using namespace std;
 
@@ -19,6 +20,7 @@ DeckCard::DeckCard() {
     vector<Card> tmpCardList = this->cardList;
     random_device rd;
     mt19937 g(rd());
+    g.seed(time(nullptr));
     shuffle(tmpCardList.begin(),tmpCardList.end(), g);
     this->cardList = tmpCardList;
 }
