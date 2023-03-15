@@ -9,7 +9,7 @@
 
 class doublePairCombo :public AbstractValue {
     private:
-        vector<Card> cards;
+        pair<pair<Card,Card>,pair<Card,Card>> cards;
     public:
         doublePairCombo(vector<Card> cards);
         double getValue() const override;
