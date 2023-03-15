@@ -62,14 +62,14 @@ class GameState {
             cout << "Players" << endl;
             int lP = players.size();
             for(int i=0;i<lP;i++){
-                cout << "Player ke-" << i+1 << endl;
+                cout << "Player name:" << players.at(i).getName() << endl;
                 vector<Card> pC = players.at(i).getPlayerCard().getCard();
                 int lPC = pC.size();
                 cout << lPC << endl;
                 for(int j=0;j<lPC;j++){
                     cout << pC.at(j).getColor() << " " << pC.at(j).getNumber() << endl;
                 }
-                cout<< "abilitynya adalah " << players.at(i).getAbility()<<endl;
+                cout << "ability: " << players.at(i).getAbility() << endl;
             }
 
             cout << "Table Card" << endl;
