@@ -55,7 +55,7 @@ class Command {
             cin >> namaFile;
             
             this->gameState.deckCard = deckCard;
-            ifstream MyReadFile(string(curDir)+"\\input\\"+namaFile+".txt");
+            ifstream MyReadFile(string(curDir)+"/src/input/"+namaFile+".txt");
             if(!MyReadFile){
                 cout << "tidak ada file" << endl;
             }
@@ -70,14 +70,18 @@ class Command {
                     words.push_back(word);
                 }
 
-                if(words.size() != 2 || find(colors.begin(), colors.end(), words.at(0)) == colors.end() || stoi(words.at(1))>0 && stoi(words.at(1))<14){
+                int idxColor = distance(colors.begin(), find(colors.begin(), colors.end(), words.at(0)));
+                if(words.size() != 2 || idxColor<0 || idxColor>3 || stoi(words.at(1))<0 || stoi(words.at(1))>13){
                     //exceptionS
                 }else{
-                    cout << i << endl;
                     Card tmp(stoi(words.at(1)), words.at(0));
-                    this->gameState.deckCard + tmp;
+
+                    vector<Card> deckCards = this->gameState.deckCard.getCard();
+                    deckCards.push_back(tmp);
+                    this->gameState.deckCard = deckCards;
                 }
             }
+
             for(int i=0;i<7;i++){
                 vector<string> words = {};
                 string word;
@@ -88,7 +92,8 @@ class Command {
                     words.push_back(word);
                 }
 
-                if(words.size() != 1 || find(abilities.begin(), abilities.end(), words.at(0)) == abilities.end()){
+                int idxAbility = distance(abilities.begin(), find(abilities.begin(), abilities.end(), words.at(0)));
+                if(words.size() != 1 || idxAbility<0 || idxAbility>6){
                     //exception
                 }else{
                     this->gameState.players.at(i).setAbility(words.at(0));

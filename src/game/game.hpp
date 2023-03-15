@@ -47,7 +47,7 @@ class Game {
                 PlayerCard playerCard = this->gameState.players.at((int) i/2).getPlayerCard();
                 vector<Card> deckCards = this->gameState.deckCard.getCard();
 
-                playerCard + deckCards.at(i);
+                playerCard + deckCards.at(0);
                 deckCards.erase(deckCards.begin());
 
                 this->gameState.players.at((int) i/2).setPlayerCard(playerCard);
