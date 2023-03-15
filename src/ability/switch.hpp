@@ -4,6 +4,7 @@
 #include <iostream>
 
 #include "action.hpp"
+#include "../card/playerCard.hpp"
 
 using namespace std;
 
@@ -17,10 +18,10 @@ public:
         this->target = target;
     }
     void DoAction() {
-        vector<Card> cl1 = this->gameState.players.at(this->gameState.order.at(this->gameState.turn)).getPlayerCard().getCard();
-        vector<Card> cl2 = this->gameState.players.at(this->target).getPlayerCard().getCard();
-        this->gameState.players.at(this->target).getPlayerCard().setCard(cl1);
-        this->gameState.players.at(this->gameState.order.at(this->gameState.turn)).getPlayerCard().setCard(cl2);
+        PlayerCard cl1 = this->gameState.players.at(this->gameState.order.at(this->gameState.turn)).getPlayerCard();
+        PlayerCard cl2 = this->gameState.players.at(this->target).getPlayerCard();
+        this->gameState.players.at(this->target).setPlayerCard(cl2);
+        this->gameState.players.at(this->gameState.order.at(this->gameState.turn)).setPlayerCard(cl1);
         this->gameState.turn++;
         this->gameState.turn %= 7;
     }
