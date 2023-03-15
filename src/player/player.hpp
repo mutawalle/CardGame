@@ -381,12 +381,68 @@ class Player {
             }
         }
 
-        bool operator>(const Player& other) {
-            return this->value > other.value;
+        bool operator>(Player& other) {
+            if(this->value == other.value){
+                double player1, player2;
+                vector<Card> player1Cards(this->getPlayerCard().getCard().begin(), this->getPlayerCard().getCard().begin()+2);
+                vector<Card> player2Cards(other.getPlayerCard().getCard().begin(), other.getPlayerCard().getCard().begin()+2);
+                //Player 1
+                if(player1Cards.at(0).getNumber() == player1Cards.at(1).getNumber()){
+                    player1 = PairCombo(player1Cards).getValue();
+                }else{
+                    if(player1Cards.at(0).getValue() > player1Cards.at(1).getValue()){
+                        player1 = player1Cards.at(0).getValue();
+                    }else{
+                        player1 = player1Cards.at(1).getValue();
+                    }
+                }
+
+                // Player 2
+                if(player2Cards.at(0).getNumber() == player2Cards.at(1).getNumber()){
+                    player2 = PairCombo(player2Cards).getValue();
+                }else{
+                    if(player2Cards.at(0).getValue() > player2Cards.at(1).getValue()){
+                        player2 = player2Cards.at(0).getValue();
+                    }else{
+                        player2 = player2Cards.at(1).getValue();
+                    }
+                }
+                return player1 > player2;
+            }else{
+                return this->value > other.value;
+            }
         }
 
-        bool operator<(const Player& other) {
-            return this->value < other.value;
+        bool operator<(Player& other) {
+            if(this->value == other.value){
+                double player1, player2;
+                vector<Card> player1Cards(this->getPlayerCard().getCard().begin(), this->getPlayerCard().getCard().begin()+2);
+                vector<Card> player2Cards(other.getPlayerCard().getCard().begin(), other.getPlayerCard().getCard().begin()+2);
+                //Player 1
+                if(player1Cards.at(0).getNumber() == player1Cards.at(1).getNumber()){
+                    player1 = PairCombo(player1Cards).getValue();
+                }else{
+                    if(player1Cards.at(0).getValue() > player1Cards.at(1).getValue()){
+                        player1 = player1Cards.at(0).getValue();
+                    }else{
+                        player1 = player1Cards.at(1).getValue();
+                    }
+                }
+
+                // Player 2
+                if(player2Cards.at(0).getNumber() == player2Cards.at(1).getNumber()){
+                    player2 = PairCombo(player2Cards).getValue();
+                }else{
+                    if(player2Cards.at(0).getValue() > player2Cards.at(1).getValue()){
+                        player2 = player2Cards.at(0).getValue();
+                    }else{
+                        player2 = player2Cards.at(1).getValue();
+                    }
+                }
+                return player1 < player2;
+            }else{
+                return this->value < other.value;
+            }
         }
 
         bool operator==(const Player& other) {
