@@ -14,7 +14,9 @@ public:
     }
     void DoAction() {
         this->gameState.players.at(this->targetPlayer).setAbilityLess(true);
-        this->gameState.players.at(this->targetPlayer).setAbility("");
+        // string ability = gameState.players.at(this->targetPlayer).getAbility();
+        // ability = ability + "null";
+        // this->gameState.players.at(this->targetPlayer).setAbility("");
         this->gameState.turn++;
         this->gameState.turn %= 7;
     }
