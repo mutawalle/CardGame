@@ -39,5 +39,21 @@ class commandException{
         }
 
 };
+class fileException {
+    private:
+        bool isRead;
+    public:
+        fileException(bool isRead){
+            this->isRead = isRead;
+        }
+        void errMessage(){
+            if(isRead){
+                cout << "format file tidak sesuai! "<< endl;
+            }
+            else{
+                cout << "file tidak ditemukan" << endl;
+            }
+        }
+};
 
 #endif
