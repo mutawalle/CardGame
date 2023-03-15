@@ -9,8 +9,8 @@
 class GameState {
     public:
         vector<Player> players;
-        DeckCard deckCard;
-        TableCard tableCard;
+        DeckCard<Card> deckCard;
+        TableCard<Card> tableCard;
         long long int point;
         vector<int> order;
         int turn;
@@ -24,7 +24,7 @@ class GameState {
             this->turn = 0;
         }
 
-        GameState(long long int point, vector<int> order, int turn, bool canUseAbility, vector<Player> players, DeckCard deckCard, TableCard tableCard){
+        GameState(long long int point, vector<int> order, int turn, bool canUseAbility, vector<Player> players, DeckCard<Card> deckCard, TableCard<Card> tableCard){
             this->players = players;
             this->deckCard = deckCard;
             this->tableCard = tableCard;

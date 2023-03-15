@@ -1,27 +1,34 @@
 #include "playerCard.hpp"
 
-PlayerCard::PlayerCard() : InventoryHolder() {}
+template<class T>
+PlayerCard<T>::PlayerCard() : InventoryHolder() {}
 
-PlayerCard::PlayerCard(vector<Card> cl) : InventoryHolder(cl) {}
+template<class T>
+PlayerCard<T>::PlayerCard(vector<T> cl) : InventoryHolder(cl) {}
 
-PlayerCard::PlayerCard(const PlayerCard& pc) : InventoryHolder(pc) {}
+template<class T>
+PlayerCard<T>::PlayerCard(const PlayerCard<T>& pc) : InventoryHolder(pc) {}
 
-PlayerCard::~PlayerCard() {
+template<class T>
+PlayerCard<T>::~PlayerCard() {
 }
 
-PlayerCard& PlayerCard::operator=(const PlayerCard& other) {
+template<class T>
+PlayerCard<T>& PlayerCard<T>::operator=(const PlayerCard<T>& other) {
     this->cardList = other.cardList;
 }
 
 
-void PlayerCard::operator+(const Card& other) {
+template<class T>
+void PlayerCard<T>::operator+(const T& other) {
     vector<Card>::iterator itr = find(this->cardList.begin(), this->cardList.end(), other);
     if (itr == this->cardList.end()) {
         cardList.push_back(other);
     }
 }
 
-void PlayerCard::operator-(const Card& other) {
+template<class T>
+void PlayerCard<T>::operator-(const T& other) {
     vector<Card>::iterator itr = find((this->cardList).begin(), (this->cardList).end(), other);
     if (itr != (this->cardList).end()) {
         (this->cardList).erase(itr);

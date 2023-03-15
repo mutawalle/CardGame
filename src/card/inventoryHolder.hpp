@@ -1,4 +1,4 @@
-// class abstrak untuk diturunkan menjadi PlayerCard dan DeckCard
+// class abstrak untuk diturunkan menjadi PlayerCard,DeckCard, dan TableCard
 #ifndef INVENTORYHOLDER_HPP
 #define INVENTORYHOLDER_HPP
 
@@ -8,21 +8,23 @@
 
 using namespace std;
 
+
+template <class T>
 class InventoryHolder {
     protected:
-        vector<Card> cardList;
+        vector<T> cardList;
 
     public:
         InventoryHolder();
-        InventoryHolder(vector<Card>);
-        InventoryHolder(const InventoryHolder&);
+        InventoryHolder(vector<T>);
+        InventoryHolder(const InventoryHolder<T>&);
         ~InventoryHolder();
-        void setCard(vector<Card>);
-        vector<Card>& getCard();
+        void setCard(vector<T>);
+        vector<T>& getCard();
         size_t getCardListLength();
-        friend ostream& operator<<(ostream&, const InventoryHolder&);
-        virtual void operator+(const Card& other) = 0;
-        virtual void operator-(const Card& other) = 0;
+        friend ostream& operator<<(ostream&, const InventoryHolder<T>&);
+        virtual void operator+(const T& other) = 0;
+        virtual void operator-(const T& other) = 0;
 };
 
 #endif

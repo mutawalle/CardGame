@@ -9,16 +9,17 @@
 #include <iostream>
 
 using namespace std;
-
-class DeckCard: public virtual InventoryHolder {
+template <class T>
+class DeckCard: public virtual InventoryHolder<T> {
 
     public:
         DeckCard();
-        DeckCard(vector<Card>);
-        DeckCard(const DeckCard&);
+        DeckCard(vector<T>);
+        DeckCard(const DeckCard<T>&);
         ~DeckCard();
-        virtual void operator+(const Card&);
-        virtual void operator-(const Card&);
+        virtual void operator+(const T&);
+        virtual void operator-(const T&);
 };
+
 
 #endif

@@ -7,16 +7,17 @@
 #include <vector>
 #include <algorithm>
 
-class PlayerCard: public virtual InventoryHolder {
+template <class T>
+class PlayerCard: public virtual InventoryHolder<T> {
 
     public:
         PlayerCard();
-        PlayerCard(vector<Card>);
-        PlayerCard(const PlayerCard&);
+        PlayerCard(vector<T>);
+        PlayerCard(const PlayerCard<T>&);
         ~PlayerCard();
-        PlayerCard& operator=(const PlayerCard&);
-        virtual void operator+(const Card&);
-        virtual void operator-(const Card&);
+        PlayerCard<T>& operator=(const PlayerCard<T>&);
+        virtual void operator+(const T&);
+        virtual void operator-(const T&);
 };
 
 #endif

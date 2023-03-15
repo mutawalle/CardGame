@@ -1,21 +1,27 @@
 #include "tableCard.hpp"
 
-TableCard::TableCard() : InventoryHolder() {}
+template <class T>
+TableCard<T>::TableCard() : InventoryHolder() {}
 
-TableCard::TableCard(vector<Card> cl) : InventoryHolder(cl) {}
+template <class T>
+TableCard<T>::TableCard(vector<T> cl) : InventoryHolder(cl) {}
 
-TableCard::TableCard(const TableCard& pc) : InventoryHolder(pc) {}
+template <class T>
+TableCard<T>::TableCard(const TableCard<T>& pc) : InventoryHolder(pc) {}
 
-TableCard::~TableCard() {}
+template <class T>
+TableCard<T>::~TableCard() {}
 
-void TableCard::operator+(const Card& other) {
+template <class T>
+void TableCard<T>::operator+(const T& other) {
     vector<Card>::iterator itr = find(this->cardList.begin(), this->cardList.end(), other);
     if (itr == this->cardList.end()) {
         cardList.push_back(other);
     }
 }
 
-void TableCard::operator-(const Card& other) {
+template <class T>
+void TableCard<T>::operator-(const T& other) {
     vector<Card>::iterator itr = find((this->cardList).begin(), (this->cardList).end(), other);
     if (itr != (this->cardList).end()) {
         (this->cardList).erase(itr);

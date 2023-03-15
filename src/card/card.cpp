@@ -1,7 +1,6 @@
 #include "card.hpp"
 
 map<string, int> colorsCard = {{"HIJAU", 0}, {"BIRU", 1}, {"KUNING", 2}, {"MERAH", 3}};
-
 Card::Card() {
     this->number = 0;
     this->color = "";

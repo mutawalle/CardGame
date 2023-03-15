@@ -6,7 +6,21 @@ map<string, int> colorsDeckCard = {{"HIJAU", 0}, {"BIRU", 1}, {"KUNING", 2}, {"M
 
 const int colorSize = colorsDeckCard.size();
 
-DeckCard::DeckCard() {
+template <class T>
+DeckCard<T>::DeckCard() {
+    this->cardList = {};
+    int n;
+    cout << "Masukkan jumlah kartu yang ingin dimasukkan ke dalam deck: ";
+    cin >> n;
+    for (int i = 0; i < n; i++) {
+        T temp;
+        cin >> temp;
+        this->cardList.push_back(temp);
+    }
+}
+
+template <>
+DeckCard<Card>::DeckCard() {
     this->cardList = {};
     for (int i = 1; i < 14; i++) {
         for (int j = 0; j < colorSize; j++) {
@@ -17,23 +31,28 @@ DeckCard::DeckCard() {
     }
 }
 
-DeckCard::DeckCard(vector<Card> cl) : InventoryHolder(cl){
+template <class T>
+DeckCard<T>::DeckCard(vector<T> cl) : InventoryHolder(cl){
 }
 
-DeckCard::DeckCard(const DeckCard& pc) : InventoryHolder(pc){
+template <class T>
+DeckCard<T>::DeckCard(const DeckCard<T>& pc) : InventoryHolder(pc){
 }
 
-DeckCard::~DeckCard() {
+template <class T>
+DeckCard<T>::~DeckCard() {
 }
 
-void DeckCard::operator+(const Card& other) {
+template <class T>
+void DeckCard<T>::operator+(const T& other) {
     auto itr = find((this->cardList).begin(), (this->cardList).end(), other);
     if (itr == (this->cardList).end()) {
         this->cardList.push_back(other);
     }
 }
 
-void DeckCard::operator-(const Card& other) {
+template <class T>
+void DeckCard<T>::operator-(const T& other) {
     auto itr = find((this->cardList).begin(), (this->cardList).end(), other);
     if (itr != (this->cardList).end()) {
         (this->cardList).erase(itr);

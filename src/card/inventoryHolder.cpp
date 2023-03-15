@@ -1,26 +1,37 @@
+#ifndef INVENTORYHOLDER_CPP
+#define INVENTORYHOLDER_CPP
+
 #include "inventoryHolder.hpp"
 
-InventoryHolder::InventoryHolder() : cardList({}) {}
+template <class T>
+InventoryHolder<T>::InventoryHolder() : cardList({}) {}
 
-InventoryHolder::InventoryHolder(vector<Card> cl) : cardList(cl) {}
+template <class T>
+InventoryHolder<T>::InventoryHolder(vector<T> cl) : cardList(cl) {}
 
-InventoryHolder::InventoryHolder(const InventoryHolder& other) : cardList(other.cardList) {}
+template <class T>
+InventoryHolder<T>::InventoryHolder(const InventoryHolder<T>& other) : cardList(other.cardList) {}
 
-InventoryHolder::~InventoryHolder() {}
+template <class T>
+InventoryHolder<T>::~InventoryHolder() {}
 
-void InventoryHolder::setCard(vector<Card> cl) {
+template <class T>
+void InventoryHolder<T>::setCard(vector<T> cl) {
     this->cardList = cl;
 }
 
-vector<Card>& InventoryHolder::getCard() {
+template <class T>
+vector<T>& InventoryHolder<T>::getCard() {
     return this->cardList;
 }
 
-size_t InventoryHolder::getCardListLength() {
+template <class T>
+size_t InventoryHolder<T>::getCardListLength() {
     return this->cardList.size();
 }
 
-ostream& operator<<(ostream& os, const InventoryHolder& dc) {
+template <class T>
+ostream& operator<<(ostream& os, const InventoryHolder<T>& dc) {
     if (dc.cardList.size() == 0) {
         os << "Card is empty";
     } else {
@@ -33,3 +44,5 @@ ostream& operator<<(ostream& os, const InventoryHolder& dc) {
     }
     return os;
 }
+
+#endif

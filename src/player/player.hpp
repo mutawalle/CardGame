@@ -22,7 +22,7 @@ using namespace std;
 class Player {
     private:
         string name;
-        PlayerCard playerCard;
+        PlayerCard<Card> playerCard;
         string ability;
         long long int point;
         bool isAbilityLess;
@@ -34,13 +34,13 @@ class Player {
             point = 0;
             isAbilityLess = false;
         }
-        Player(string _name, PlayerCard pc, string _abillity, long long int _poin): playerCard(pc){
+        Player(string _name, PlayerCard<Card> pc, string _abillity, long long int _poin): playerCard(pc){
             name = _name;
             ability = _abillity;
             point = _poin;
             isAbilityLess = false;
         }
-        Player(const Player& other): playerCard(other.playerCard){
+        Player(const Player& other): playerCard(other.playerCard<Card>){
             name = other.name;
             ability = other.ability;
             point = other.point;
@@ -92,7 +92,7 @@ class Player {
             this->ability = ability;
         }
 
-        void setPlayerCard(PlayerCard playerCard){
+        void setPlayerCard(PlayerCard<Card> playerCard){
             this->playerCard = playerCard;
         }
 
