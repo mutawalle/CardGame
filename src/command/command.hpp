@@ -49,7 +49,6 @@ class Command {
             string myText;
 
             getcwd(curDir, sizeof(curDir));
-            cout << curDir << endl;
 
             cout << "Masukkan nama file(pastikan berada di folder input): ";
             cin >> namaFile;
@@ -59,7 +58,6 @@ class Command {
             if(!MyReadFile){
                 fileException err(false);
                 throw err;
-                // cout << "tidak ada file" << endl;
             }
 
             for(int i=0;i<52;i++){
@@ -72,9 +70,7 @@ class Command {
                     words.push_back(word);
                 }
 
-                int idxColor = distance(colors.begin(), find(colors.begin(), colors.end(), words.at(0)));
-                if(words.size() != 2 || idxColor<0 || idxColor>3 || stoi(words.at(1))<0 || stoi(words.at(1))>13){
-                    //exceptionS
+                if(words.size() != 2 || distance(colors.begin(), find(colors.begin(), colors.end(), words.at(0)))<0 || distance(colors.begin(), find(colors.begin(), colors.end(), words.at(0)))>3 || stoi(words.at(1))<0 || stoi(words.at(1))>13){
                     fileException err(true);
                     throw err;
                 }else{
@@ -95,14 +91,13 @@ class Command {
                 while(ss >> word){
                     words.push_back(word);
                 }
-
-                int idxAbility = distance(abilities.begin(), find(abilities.begin(), abilities.end(), words.at(0)));
-                if(words.size() != 1 || idxAbility<0 || idxAbility>6){
-                    //exception
+                
+                if(words.size() != 1 || distance(abilities.begin(), find(abilities.begin(), abilities.end(), words.at(0)))<0 || distance(abilities.begin(), find(abilities.begin(), abilities.end(), words.at(0)))>6){
                     fileException err(true);
                     throw err;
                 }else{
                     this->gameState.players.at(i).setAbility(words.at(0));
+                    myText = "";
                 }
             }
 
@@ -126,7 +121,6 @@ class Command {
                         err.errMessage();
                     }
                 }
-                inputFile();
             }
         }
 

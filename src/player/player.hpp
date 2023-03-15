@@ -56,15 +56,6 @@ class Player {
 
         void sorting() {
             sort(playerCard.getCard().begin(),playerCard.getCard().end());
-            // for (int i = 0; i < playerCard.getCard().size(); i++) {
-            //     for (int j = i+1; j < playerCard.getCard().size(); j++) {
-            //         if (playerCard.getCard()[i].getNumber() > playerCard.getCard()[j].getNumber()) {
-            //             Card temp = playerCard.getCard()[j];
-            //             playerCard.getCard()[j] = playerCard.getCard()[i];
-            //             playerCard.getCard()[i] = temp;
-            //         }
-            //     }
-            // }
         }
         string getAbility(){
             return ability;
@@ -159,11 +150,9 @@ class Player {
             for(size_t i=1;i<playerCard.getCard().size();i++){
                 if(playerCard.getCard()[i].getNumber()-playerCard.getCard()[i-1].getNumber()==0 || playerCard.getCard()[i].getNumber()-playerCard.getCard()[i-1].getNumber()==1){
                     value++;
-                    // straightvec push
                 }
                 else{
                     value=0;
-                    // straightVec delete
                 }
 
                 if(value>=4){
@@ -174,34 +163,11 @@ class Player {
             int currentNumber=jarak;
             straightVec.push_back(playerCard.getCard()[idx]);
             for(int i=jarak-1;i>=0;i--){
-                // straightVec.push_back(playerCard.getCard()[i]);
                 if(currentNumber-playerCard.getCard()[i].getNumber()==1){
                     currentNumber--;
                     straightVec.push_back(playerCard.getCard()[i]);
                 }
             }
-            // //vector sudah terurut
-            // int index = 0;
-            // vector<Card> straightVec;
-            // bool str = false;
-            // for(int i = 0; i <= playerCard.getCard().size()-5; i++){
-            //     int count = 1;
-            //     for(int j = i+1; j < i+4; j++){
-            //         if(playerCard.getCard()[i].getNumber() - i == playerCard.getCard()[j].getNumber() - j){
-            //             count ++;
-            //         }
-            //         if(count == 5){
-            //             str = true;
-            //             index = i;
-            //             break;
-            //         }
-            //     }
-            // }
-            // if(str){
-            //     for(int i = index ; i<index+5; i++){
-            //         straightVec.push_back(playerCard.getCard()[i]);
-            //     }
-            // }
             
             return straightVec;
         }
@@ -225,7 +191,6 @@ class Player {
             }
             if(isFlush){
                 int i = playerCard.getCardListLength() - 1;
-                //list sudah terurut, untuk memaksimalkan combo dipilih kartu dengan nilai paling besar
                 while(FlushCard.size() < 5){
                     if(playerCard.getCard()[i].getColor() == color){
                         FlushCard.push_back(playerCard.getCard()[i]);
@@ -294,7 +259,6 @@ class Player {
             vector<Card> SFCard;
             vector<int> temp;
             bool str = false;
-            // int index = 0;
             for(size_t i = 0; i <= playerCard.getCard().size()-5; i++){
                 int count = 1;
                 vector<int> index;
@@ -305,11 +269,8 @@ class Player {
                         index.push_back(j);
                     }
                     if(count == 5){
-                        // cout<<"count : ";
-                        // cout<<count<<endl;
                         str = true;
                         temp = index;
-                        // index = i;
                         break;
                     }
                 }
@@ -319,9 +280,6 @@ class Player {
                 for(size_t i = 0; i<temp.size(); i++){
                     SFCard.push_back(playerCard.getCard()[temp[i]]);
                 }
-                // for(int i = index ; i<index+5; i++){
-                //     SFCard.push_back(playerCard.getCard()[i]);
-                // }
             }
             if(SFCard.size() == 5){
                 return SFCard;
@@ -329,31 +287,6 @@ class Player {
             else{
                 return {};
             }
-            // vector<Card> SFCard;
-            // bool str = false;
-            // int index = 0;
-            // for(int i = 0; i <= playerCard.getCard().size()-5; i++){
-            //     int count = 1;
-            //     for(int j = i+1; j <= i+4; j++){
-            //         if(playerCard.getCard()[i].getValue()*10 - i == playerCard.getCard()[j].getValue()*10 - j){
-            //             count ++;
-            //         }
-            //         if(count == 5){
-            //             cout<<"count : ";
-            //             cout<<count<<endl;
-            //             str = true;
-            //             index = i;
-            //             break;
-            //         }
-            //     }
-            // }
-            
-            // if(str){
-            //     for(int i = index ; i<index+5; i++){
-            //         SFCard.push_back(playerCard.getCard()[i]);
-            //     }
-            // }
-            // return SFCard;
         }
         void setValue(){
             sorting();
