@@ -27,8 +27,15 @@ class Game {
         }
 
         void start(){
+            Command command(this->gameState);
+            command.chooseSplitingCard();
+            command.inputName();
+            this->gameState = command.getGamestate();
+
             while(!isFinish){
+                command.splashRound(this->round);
                 roundth();
+                this->roundRobin();
                 this->round++;
             }
         }
@@ -65,6 +72,11 @@ class Game {
             this->gameState.deckCard - tmp;
         }
 
+        void roundRobin(){
+            this->gameState.order.insert(this->gameState.order.end(), this->gameState.order.at(0));
+            this->gameState.order.erase(this->gameState.order.begin());
+        }
+
         void roundth(){
             if(this->round==1){
                 splitCards();
@@ -82,16 +94,23 @@ class Game {
             }
 
             if(this->round == 6){
-                int winner6Idx=0;
-                this->gameState.players.at(winner6Idx).setValue();
-                for(int i=1;i<7;i++){
-                    this->gameState.players.at(i).setValue();
-                    if(this->gameState.players.at(i) > this->gameState.players.at(winner6Idx)){
-                        winner6Idx = i;
+                for(int i=0;i<7;i++){
+                    for(int j=0;j<5;j++){
+                        PlayerCard playerCards = this->gameState.players.at(i).getPlayerCard();
+                        playerCards + this->gameState.tableCard.getCard().at(j);
+                        this->gameState.players.at(i).setPlayerCard(playerCards);
                     }
                 }
 
-                this->gameState.players.at(winner6Idx).setPoint(this->gameState.players.at(winner6Idx).getPoint() + this->gameState.point);
+                // Kuranggggggg
+                Player winner;
+
+                vector<Player> listPlayer = this->gameState.players;
+                winner = getMax<Player>(listPlayer);
+
+                int winnerIdx =  distance(listPlayer.begin(), find(listPlayer.begin(), listPlayer.end(), winner));
+
+                this->gameState.players.at(winnerIdx).setPoint(this->gameState.players.at(winnerIdx).getPoint() + this->gameState.point);
 
                 int winnerAllIdx = 0;
                 for(int i=0;i<7;i++){
@@ -113,9 +132,19 @@ class Game {
                     this->gameState.order = {0,1,2,3,4,5,6};
                     this->gameState.turn = 0;
                 }
-            }else{
-
             }
+        }
+
+        template <class T>
+        T getMax(vector<T> listData){
+            int len;
+            T max = listData.at(0);
+            for(int i=1;i<len;i++){
+                if(listData.at(i)>max){
+                    max = listData.at(i);
+                }
+            }
+            return max;
         }
 };
 

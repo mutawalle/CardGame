@@ -17,8 +17,7 @@ public:
             reverse(order.begin(), order.end());
         }
         this->gameState.order = order;
-        this->gameState.turn++;
-        this->gameState.turn %= 7;
+        this->gameState.turn = 0;
     }
 };
 
