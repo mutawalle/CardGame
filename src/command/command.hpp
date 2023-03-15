@@ -57,7 +57,9 @@ class Command {
             this->gameState.deckCard = deckCard;
             ifstream MyReadFile(string(curDir)+"/src/input/"+namaFile+".txt");
             if(!MyReadFile){
-                cout << "tidak ada file" << endl;
+                fileException err(false);
+                throw err;
+                // cout << "tidak ada file" << endl;
             }
 
             for(int i=0;i<52;i++){
@@ -73,6 +75,8 @@ class Command {
                 int idxColor = distance(colors.begin(), find(colors.begin(), colors.end(), words.at(0)));
                 if(words.size() != 2 || idxColor<0 || idxColor>3 || stoi(words.at(1))<0 || stoi(words.at(1))>13){
                     //exceptionS
+                    fileException err(true);
+                    throw err;
                 }else{
                     Card tmp(stoi(words.at(1)), words.at(0));
 
@@ -95,6 +99,8 @@ class Command {
                 int idxAbility = distance(abilities.begin(), find(abilities.begin(), abilities.end(), words.at(0)));
                 if(words.size() != 1 || idxAbility<0 || idxAbility>6){
                     //exception
+                    fileException err(true);
+                    throw err;
                 }else{
                     this->gameState.players.at(i).setAbility(words.at(0));
                 }
@@ -110,6 +116,16 @@ class Command {
             cout << "2. File" << endl;
             cin >> tmp;
             if(tmp == 2){
+                bool valid = false;
+                while(!valid){
+                    try{
+                        inputFile();
+                        valid = true;
+                    }
+                    catch(fileException err){
+                        err.errMessage();
+                    }
+                }
                 inputFile();
             }
         }
