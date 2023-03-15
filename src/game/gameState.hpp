@@ -69,6 +69,7 @@ class GameState {
                 for(int j=0;j<lPC;j++){
                     cout << pC.at(j).getColor() << " " << pC.at(j).getNumber() << endl;
                 }
+                cout<< "abilitynya adalah " << players.at(i).getAbility()<<endl;
             }
 
             cout << "Table Card" << endl;

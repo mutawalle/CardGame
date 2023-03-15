@@ -85,46 +85,46 @@ class Command {
             }
             case 3:
             {
-                if(gameState.players.at(gameState.turn).getAbility() == "re-roll"){
+                if(gameState.players.at(gameState.turn).getAbility() == "RE-ROLL"){
                     ReRoll reRoll(this->gameState);
                     reRoll.DoAction();
                     this->gameState = reRoll.GetGameState();
                 }
                 else{
-                    commandException err(" ", "re-roll", gameState.players.at(gameState.turn).getIsAbilityLess());
+                    commandException err(" ", "RE-ROLL", gameState.players.at(gameState.turn).getIsAbilityLess());
                     throw err;
                 }
                 break;
             }
             case 4:
             {
-                if(gameState.players.at(gameState.turn).getAbility() == "quadruple"){
+                if(gameState.players.at(gameState.turn).getAbility() == "QUADRUPLE"){
                     Quadruple quadruple(this->gameState);
                     quadruple.DoAction();
                     this->gameState = quadruple.GetGameState();
                 }
                 else{
-                    commandException err(" ", "quadruple", gameState.players.at(gameState.turn).getIsAbilityLess());
+                    commandException err(" ", "QUADRUPLE", gameState.players.at(gameState.turn).getIsAbilityLess());
                     throw err;
                 }
                 break;
             }
             case 5:
             {
-                if(gameState.players.at(gameState.turn).getAbility() == "quarter"){
+                if(gameState.players.at(gameState.turn).getAbility() == "QUARTER"){
                     Quarter quarter(this->gameState);
                     quarter.DoAction();
                     this->gameState = quarter.GetGameState();
                 }
                 else{
-                    commandException err(" ", "quarter", gameState.players.at(gameState.turn).getIsAbilityLess());
+                    commandException err(" ", "QUARTER", gameState.players.at(gameState.turn).getIsAbilityLess());
                     throw err;
                 }
                 break;
             }
             case 6:
             {
-                if(gameState.players.at(gameState.turn).getAbility() == "reverseDirection"){
+                if(gameState.players.at(gameState.turn).getAbility() == "REVERSE"){
                     ReverseDirection reverseDirection(this->gameState);
                     reverseDirection.DoAction();
                     this->gameState = reverseDirection.GetGameState();
@@ -137,7 +137,7 @@ class Command {
             }
             case 7:
             {
-                if(gameState.players.at(gameState.turn).getAbility() == "swap-card"){
+                if(gameState.players.at(gameState.turn).getAbility() == "SWAP"){
                     vector<Player> listTarget;
                     for(size_t i = 0; i<gameState.players.size(); i++){
                         if(i != gameState.turn){
@@ -155,6 +155,8 @@ class Command {
                         cout << "input tidak valid!! ulangi "<<endl;
                         cin >> noPlayer1;
                     }
+                    auto iter1 = find(gameState.players.begin(), gameState.players.end(), listTarget[noPlayer1-1]);
+                    noPlayer1 = distance(gameState.players.begin(), iter1);
                     listTarget.erase(listTarget.begin() + noPlayer1-1);
                     for(size_t i = 0; i<listTarget.size(); i++){
                         cout << i+1<< listTarget[i].getName()<<endl;
@@ -165,6 +167,8 @@ class Command {
                         cout << "input tidak valid!! ulangi "<<endl;
                         cin >> noPlayer2;
                     }
+                    auto iter2 = find(gameState.players.begin(), gameState.players.end(), listTarget[noPlayer2-1]);
+                    noPlayer2 = distance(gameState.players.begin(), iter2);
                     cout << "Pilih kiri atau kanan dari pemain pertama" << endl;
                     cout << "1. Kanan"<<endl;
                     cout << "2. Kiri"<< endl;
@@ -181,7 +185,7 @@ class Command {
                         cout << "input tidak valid!! ulangi "<<endl;
                         cin >> noKartu2;
                     }
-                    SwapCard swapCard(this->gameState, noPlayer1-1, noPlayer2-1, noKartu1-1, noKartu2-1);
+                    SwapCard swapCard(this->gameState, noPlayer1, noPlayer2, noKartu1-1, noKartu2-1);
                     swapCard.DoAction();
                     this->gameState = swapCard.GetGameState();
                 }
@@ -193,7 +197,7 @@ class Command {
             }
             case 8:
             {
-                if(gameState.players.at(gameState.turn).getAbility() == "switch"){
+                if(gameState.players.at(gameState.turn).getAbility() == "SWITCH"){
                     int noPlayer;
                     vector<Player> listTarget;
                     cout << gameState.players.at(gameState.turn).getName() << " akan melakukan switch"<< endl;
@@ -214,7 +218,9 @@ class Command {
                         cout << "input tidak valid!! ulangi "<<endl;
                         cin >> noPlayer;
                     }
-                    Switch swit = Switch(this->gameState, noPlayer-1);
+                    auto iter = find(gameState.players.begin(), gameState.players.end(), listTarget[noPlayer-1]);
+                    noPlayer = distance(gameState.players.begin(), iter);
+                    Switch swit = Switch(this->gameState, noPlayer);
                     swit.DoAction();
                     this->gameState = swit.GetGameState();
                 }
@@ -226,7 +232,7 @@ class Command {
             }
             case 9:
             {
-                if(gameState.players.at(gameState.turn).getAbility() == "abilityLess"){
+                if(gameState.players.at(gameState.turn).getAbility() == "ABILITYLESS"){
                     vector<Player> listTarget;
                     cout << gameState.players.at(gameState.turn).getName() << " akan mematikan kartu ablity lawan!"<< endl;
                     cout << "silahkan pilih nomor pemain yang ingin dimatikan!"<< endl;
@@ -244,8 +250,10 @@ class Command {
                         cout << "input tidak valid!! ulangi "<<endl;
                         cin >> nomorTarget;
                     }
+                    auto iter = find(gameState.players.begin(), gameState.players.end(), listTarget[nomorTarget-1]);
+                    nomorTarget = distance(gameState.players.begin(), iter);
 
-                    AbilityLess abilityLess = AbilityLess(this->gameState, nomorTarget-1);
+                    AbilityLess abilityLess = AbilityLess(this->gameState, nomorTarget);
                     abilityLess.DoAction(); 
                     this->gameState = abilityLess.GetGameState();
                 }
