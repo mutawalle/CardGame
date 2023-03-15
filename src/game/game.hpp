@@ -39,6 +39,7 @@ class Game {
                 this->roundRobin();
                 this->round++;
             }
+            
         }
 
         void splitCards(){
@@ -80,7 +81,7 @@ class Game {
         void roundth(){
             if(this->round==1){
                 splitCards();
-            }else if(this->round==2){
+            }else if(this->round==2 && this->gameState.players.at(0).getAbility() == ""){
                 splitAbilities();
             }
             if(this->round<6){

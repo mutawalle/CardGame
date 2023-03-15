@@ -2,6 +2,7 @@
 #define COMMAND_HPP
 
 #include <bits/stdc++.h> 
+#include <unistd.h>
 #include "../game/gameState.hpp" 
 #include "commandException.hpp"
 
@@ -42,10 +43,22 @@ class Command {
             vector<string> colors = {"HIJAU", "MERAH", "KUNING", "BIRU"};
             vector<string> abilities = {"RE-ROLL", "QUADRUPLE", "QUARTER", "REVERSE", "SWAP","SWITCH", "ABILITYLESS"};
             string namaFile;
-            cin >> namaFile;
+            char curDir[256];
+            vector<Card> vectorCard = {};
+            DeckCard deckCard(vectorCard);
             string myText;
 
-            ifstream MyReadFile(namaFile+".txt");
+            getcwd(curDir, sizeof(curDir));
+            cout << curDir << endl;
+
+            cout << "Masukkan nama file(pastikan berada di folder input): ";
+            cin >> namaFile;
+            
+            this->gameState.deckCard = deckCard;
+            ifstream MyReadFile(string(curDir)+"\\input\\"+namaFile+".txt");
+            if(!MyReadFile){
+                cout << "tidak ada file" << endl;
+            }
 
             for(int i=0;i<52;i++){
                 vector<string> words = {};
@@ -60,6 +73,7 @@ class Command {
                 if(words.size() != 2 || find(colors.begin(), colors.end(), words.at(0)) == colors.end() || stoi(words.at(1))>0 && stoi(words.at(1))<14){
                     //exceptionS
                 }else{
+                    cout << i << endl;
                     Card tmp(stoi(words.at(1)), words.at(0));
                     this->gameState.deckCard + tmp;
                 }
