@@ -133,6 +133,7 @@ class Game {
                     this->gameState.turn = 0;
                 }
             }
+            this->gameState.turn = 0;
         }
 
         template <class T>

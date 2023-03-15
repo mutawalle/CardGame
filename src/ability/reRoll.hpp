@@ -13,6 +13,8 @@ public:
     ReRoll() {}
     ReRoll (GameState gameState) : Action(gameState) {}
     void DoAction() {
+        cout << "Melakukan pembuangan kartu yang sedang dimiliki"<<endl;
+        cout << "Kamu mendapatkan 2 kartu baru yaitu:"<< endl;
         vector<Card> playerCard = this->gameState.players.at(this->gameState.turn).getPlayerCard().getCard();
         vector<Card> deckCard = this->gameState.deckCard.getCard();
         playerCard.erase(playerCard.end());
@@ -28,6 +30,8 @@ public:
         this->gameState.players.at(this->gameState.turn).setPlayerCard(playerCard);
         this->gameState.turn++;
         this->gameState.turn %= 7;
+        cout << this->gameState.players.at(this->gameState.turn).getPlayerCard().getCard().at(0)<< endl;
+        cout << this->gameState.players.at(this->gameState.turn).getPlayerCard().getCard().at(1)<< endl;
     }
 };
 
