@@ -23,6 +23,7 @@ class InventoryHolder {
         friend ostream& operator<<(ostream&, const InventoryHolder&);
         virtual void operator+(const Card& other) = 0;
         virtual void operator-(const Card& other) = 0;
+        void printListCard();
 };
 
 #endif

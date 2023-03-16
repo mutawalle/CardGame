@@ -29,17 +29,22 @@ class Game {
 
         void start(){
             Command command(this->gameState);
-            command.chooseSplitingCard();
+            command.opening();
             command.inputName();
+            command.chooseSplitingCard();
             this->gameState = command.getGamestate();
 
             while(!isFinish){
-                command.splashRound(this->round);
                 roundth();
                 this->roundRobin();
                 this->round++;
             }
-            
+            Player winner = getMax<Player>(this->gameState.players);
+            cout << "\033[34m" << "Selamat " << winner.getName() << " kamu menang" << "\033[0m" << endl;
+            cout << "Poin Akhir" << endl;
+            for(int i=0;i<7;i++){
+                cout << this->gameState.players.at(i).getName() << ": " << this->gameState.players.at(i).getPoint() << endl;
+            }
         }
 
         void splitCards(){
@@ -56,20 +61,22 @@ class Game {
         }
 
         void splitAbilities(){
+            vector<string> abilitiesCopy = abilities;
             for(int i=7;i>0;i--){
                 srand(time(nullptr));
                 int randVal = rand() % i;
-                gameState.players[7-i].setAbility(abilities[randVal]);
-                abilities.erase(abilities.begin() + randVal);
+                gameState.players[7-i].setAbility(abilitiesCopy[randVal]);
+                abilitiesCopy.erase(abilitiesCopy.begin() + randVal);
             }
         }
 
         void addTableCard(){
-            int lenDC = gameState.deckCard.getCardListLength();
-            int randVal = rand() % lenDC;
-            Card tmp = this->gameState.deckCard.getCard().at(randVal);
+            Card tmp = this->gameState.deckCard.getCard().at(0);
+            vector<Card> tableCard = this->gameState.tableCard.getCard();
 
-            this->gameState.tableCard + tmp;
+            tableCard.push_back(tmp);
+
+            this->gameState.tableCard.setCard(tableCard);
             this->gameState.deckCard - tmp;
         }
 
@@ -89,16 +96,16 @@ class Game {
             }
             for(int i=0;i<7;i++){
                 Command command = Command(gameState);
+                command.splashRound(this->round);
                 command.inputCommand();
                 this->gameState = command.getGamestate();
-                this->gameState.printState();
             }
 
             if(this->round == 6){
                 for(int i=0;i<7;i++){
                     for(int j=0;j<5;j++){
-                        PlayerCard playerCards = this->gameState.players.at(i).getPlayerCard();
-                        playerCards + this->gameState.tableCard.getCard().at(j);
+                        vector<Card> playerCards = this->gameState.players.at(i).getPlayerCard().getCard();
+                        playerCards.push_back(this->gameState.tableCard.getCard().at(j));
                         this->gameState.players.at(i).setPlayerCard(playerCards);
                     }
                 }
@@ -108,9 +115,14 @@ class Game {
                 }
 
                 Player winner = getMax(this->gameState.players);
-                cout << winner.getValue() << endl;
 
-                int winnerIdx = distance(find(this->gameState.players.begin(), this->gameState.players.end(), winner), this->gameState.players.begin());
+                int winnerIdx;
+
+                for(int i=0;i<7;i++){
+                    if(gameState.players.at(i).getPlayerCard().getCard().at(0) == winner.getPlayerCard().getCard().at(0)){
+                        winnerIdx = i;
+                    }
+                }
 
                 this->gameState.players.at(winnerIdx).setPoint(this->gameState.players.at(winnerIdx).getPoint() + this->gameState.point);
                 
@@ -120,7 +132,6 @@ class Game {
                         winnerAllIdx = i;
                     }
                 }
-
 
                 if(this->gameState.players.at(winnerAllIdx).getPoint() >= pow(2,32)){
                     this->isFinish = true;
@@ -132,9 +143,19 @@ class Game {
                     this->gameState.tableCard = TableCard();
                     this->gameState.deckCard = DeckCard();
                     this->gameState.point = 64;
-                    this->gameState.order = {0,1,2,3,4,5,6};
+                    this->gameState.order = {6,0,1,2,3,4,5};
                     this->gameState.turn = 0;
                     this->round = 0;
+                    cout << "\033[33m" << "Belum ada pemenang, permainan dimulai lagi dari ronde 1" << "\033[0m" << endl;
+                    cout << "Poin Sementara" << endl;
+                    for(int i=0;i<7;i++){
+                        cout << this->gameState.players.at(i).getName() << ": " << this->gameState.players.at(i).getPoint() << endl;
+                    }
+                    string s;
+                    cout << "Ketik apapun untuk memulai: ";
+                    cin >> s;
+                    system("clear");
+                    system("cls");
                 }
             }
             this->gameState.turn = 0;

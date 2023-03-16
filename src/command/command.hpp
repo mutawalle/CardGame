@@ -1,8 +1,9 @@
 #ifndef COMMAND_HPP
 #define COMMAND_HPP
 
-#include <bits/stdc++.h> 
+#include <bits/stdc++.h>
 #include <unistd.h>
+#include <cstdlib>
 #include "../game/gameState.hpp" 
 #include "commandException.hpp"
 
@@ -21,6 +22,7 @@
 using namespace std;
 
 map<string, int> commands = {{"NEXT", 0}, {"DOUBLE", 1}, {"HALF", 2}, {"RE-ROLL", 3}, {"QUADRUPLE", 4}, {"QUARTER", 5}, {"REVERSE", 6}, {"SWAP",7}, {"SWITCH", 8}, {"ABILITYLESS", 9}};
+map<string, string> colorsCodeCommand = {{"HIJAU", "\033[32m"}, {"BIRU", "\033[34m"}, {"KUNING", "\033[33m"}, {"MERAH", "\033[31m"}, {"MAGENTA", "\033[35m"}, {"CYAN", "\033[36m"}, {"RESET", "\033[0m"}};
 
 class Command {
     private:
@@ -106,42 +108,58 @@ class Command {
 
         void chooseSplitingCard(){
             int tmp;
-            cout << "Silakan memilih metode pembagian kartu: " << endl;
-            cout << "1. Random" << endl;
-            cout << "2. File" << endl;
-            cin >> tmp;
-            if(tmp == 2){
-                bool valid = false;
-                while(!valid){
-                    try{
-                        inputFile();
-                        valid = true;
-                    }
-                    catch(fileException err){
-                        err.errMessage();
+            do {
+                cout << "Silakan memilih metode pembagian kartu: " << endl;
+                cout << "1. Random" << endl;
+                cout << "2. File" << endl;
+                cout << "Masukan pilihan: ";
+                cin >> tmp;
+                if(tmp == 2){
+                    bool valid = false;
+                    while(!valid){
+                        try{
+                            inputFile();
+                            valid = true;
+                        }
+                        catch(fileException err){
+                            err.errMessage();
+                        }
                     }
                 }
-            }
+            }while(tmp<1 || tmp>2);
+            system("clear");
+            system("cls");
         }
 
         void inputName(){
             cout << "Silakan isi nama setiap pemain" << endl;
             for(int i=0;i<7;i++){
                 string name;
-                cout << "Masukan nama pemain ke-" << i+1 << endl;
+                cout << "Masukan nama pemain ke-" << i+1 << " : ";
                 cin >> name;
                 this->gameState.players.at(i).setName(name);
             }
+            system("cls");
+            system("clear");
         }
 
         void splashRound(int n){
-            cout << "Ronde ke-" << n << " dimulai" << endl;
+            vector<int> order = this->gameState.order;
+            cout << colorsCodeCommand["CYAN"] << "RONDE " << n << colorsCodeCommand["RESET"] << endl;
+            cout << "Sekarang giliran " << this->gameState.players.at(order.at(this->gameState.turn)).getName() << endl;
+            cout << "Ini kartu kamu" << endl;
+            this->gameState.players.at(order.at(this->gameState.turn)).getPlayerCard().printListCard();
+            cout << "Ini kartu di meja" << endl;
+            this->gameState.tableCard.printListCard();
+            cout << "poin kamu: " << this->gameState.players.at(order.at(this->gameState.turn)).getPoint() << endl;
+            cout << "poin game: " << this->gameState.point << endl;
+            if(n >= 2){
+                cout << "ability kamu: " << this->gameState.players.at(order.at(this->gameState.turn)).getAbility() << endl;
+            }
         }
 
         void commandValidation(){
-            vector<int> order = this->gameState.order;
-            cout << "Sekaran giliran " << this->gameState.players.at(order.at(this->gameState.turn)).getName() << endl;
-            cout<<"silahkan input command : ";
+            cout<<"silakan input command : ";
             cin >> command;
             cout << endl;
             auto In = commands.find(command);
@@ -158,8 +176,12 @@ class Command {
                     commandValidation();
                     abillityValidation();
                     valid = true;
+                    system("cls");
+                    system("clear");
                 }
                 catch(commandException err){
+                    system("clear");
+                    system("cls");
                     err.errorMessage();
                 }
             }
@@ -399,6 +421,18 @@ class Command {
             default:
                 break;
             }
+        }
+
+        void opening(){
+            string s;
+            cout << colorsCodeCommand["MAGENTA"] << " _    _  ____  __    ___  _____  __  __  ____" << endl; 
+            cout << "( \\/\\/ )( ___)(  )  / __)(  _  )(  \\/  )( ___)" << endl;
+            cout << " )    (  )__)  )(__( (__  )(_)(  )    (  )__) " << endl;
+            cout << "(__/\\__)(____)(____)\\___)(_____)(_/\\/\\_)(____)" << colorsCodeCommand["RESET"] << endl;
+            cout << "ketik apapun untuk memulai: ";
+            cin >> s;
+            system("cls");
+            system("clear");
         }
         
 };

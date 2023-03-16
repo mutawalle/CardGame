@@ -17,7 +17,7 @@ Card::Card(int number, string color, double value) {
 Card::Card(int number, string color) {
     this->number = number;
     this->color = color;
-    double toValue = (double) number / 10 + colorsCard[color] * 3 / 100;
+    double toValue = double(number) / 10 + double(colorsCard[color] * 3) / double(100);
     this->value = toValue;
 }
 

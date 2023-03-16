@@ -1,4 +1,7 @@
 #include "inventoryHolder.hpp"
+#include <iomanip>
+
+map<string, string> colorsCode = {{"HIJAU", "\033[32m"}, {"BIRU", "\033[34m"}, {"KUNING", "\033[33m"}, {"MERAH", "\033[31m"}};
 
 InventoryHolder::InventoryHolder() : cardList({}) {}
 
@@ -32,4 +35,36 @@ ostream& operator<<(ostream& os, const InventoryHolder& dc) {
         }
     }
     return os;
+}
+
+void InventoryHolder::printListCard(){
+    int len = this->cardList.size();
+    for(int i=0;i<len;i++){
+        cout << colorsCode[this->cardList.at(i).getColor()] << "  -----  " << "\033[0m";
+    }
+    cout << endl;
+    for(int i=0;i<len;i++){
+        cout << colorsCode[this->cardList.at(i).getColor()] << " |" << left << setw(2) << this->cardList.at(i).getNumber() << "   | " << "\033[0m";
+    }
+    cout << endl;
+    for(int i=0;i<len;i++){
+        cout << colorsCode[this->cardList.at(i).getColor()] << " | / \\ | " << "\033[0m";
+    }
+    cout << endl;
+    for(int i=0;i<len;i++){
+        cout << colorsCode[this->cardList.at(i).getColor()] << " |  " << this->cardList.at(i).getColor()[0] << "  | " << "\033[0m";
+    }
+    cout << endl;
+    for(int i=0;i<len;i++){
+        cout << colorsCode[this->cardList.at(i).getColor()] << " | \\ / | " << "\033[0m";
+    }
+    cout << endl;
+    for(int i=0;i<len;i++){
+        cout << colorsCode[this->cardList.at(i).getColor()] << " |     | " << "\033[0m";
+    }
+    cout << endl;
+    for(int i=0;i<len;i++){
+        cout << colorsCode[this->cardList.at(i).getColor()] << "  -----  " << "\033[0m";
+    }
+    cout << endl;
 }
