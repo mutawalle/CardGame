@@ -140,20 +140,23 @@ class BlackJack {
                cout << endl;
       
        while(this->status){
-
-
-           cout << "1. hit" << endl;
-           cout << "2. stand" << endl << "ketik hit/stand: ";
-           string input;
-           cin >> input;
-           if(input == "hit"){
-               hit();
-           }else if(input == "stand"){
-               stand();
-              
-           }else{
-               cout << "salah input" << endl;
-           }
+            double valP;
+            double valB;
+            evaluate(player2, valP);
+            evaluate(bandar, valB);
+            cout<< "Nilai kartumu sebesar "<< valP<<endl;
+            cout << "1. hit" << endl;
+            cout << "2. stand" << endl << "ketik hit/stand: ";
+            string input;
+            cin >> input;
+            if(input == "hit"){
+                hit();
+            }else if(input == "stand"){
+                stand();
+                
+            }else{
+                cout << "salah input" << endl;
+            }
        }
        if(win){
            cout << "cie menang" << endl;

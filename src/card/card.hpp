@@ -28,6 +28,7 @@ class Card : public AbstractValue {
         int getNumber() const;
         string getColor() const;
         friend ostream& operator<<(ostream& os, const Card& obj);
+        bool operator==(const Card& other);
 };
 
 #endif

@@ -53,3 +53,7 @@ ostream& operator<<(ostream& os, const Card& obj) {
     os << "{" << obj.getNumber() << " " << obj.getColor() << " " << obj.getValue() << "}";
     return os;
 }
+
+bool Card::operator==(const Card& other) {
+    return this->getValue() == other.getValue() && this->getColor() == other.getColor() && this->getNumber() == other.getNumber();
+}

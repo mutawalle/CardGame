@@ -16,9 +16,6 @@ class AbstractValue {
         bool operator>=(const AbstractValue& other) {
             return this->getValue() >= other.getValue();
         }
-        bool operator==(const AbstractValue& other) {
-            return this->getValue() == other.getValue();
-        }
 };
 
 

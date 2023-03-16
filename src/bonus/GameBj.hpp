@@ -16,12 +16,13 @@ class GameBJ{
            cin >> name;
            state.getPlayerBj().setName(name);
            state.getPlayerBj().setPoint(point);
-           cout << "Poin awal mu: " << point << endl;
+        //    cout << "Poin awal mu: " << point << endl;
        }
 
 
        void startGame(){
            while(status){
+            cout << "Poin mu sekarang : " << point << endl;
                cout << "Masukan bid mu: " ;
                int bid;
                cin >> bid;
@@ -32,15 +33,15 @@ class GameBJ{
                    cout << "masukan salah" << endl;
                }
                while(stat){
-                   cout << "Masukan bid mu: ";
-                   int bid;
-                   cin >> bid;
-                   stat = true;
-                   if(bid <= state.getPlayerBj().getPoint()){
-                       stat = false;
-                   }else{
-                       cout << "masukan salah" << endl;
-                   }
+                    cout << "Poin mu sekarang: " << point << endl;
+                    cout << "Masukan bid mu: ";
+                    cin >> bid;
+                    stat = true;
+                    if(bid <= state.getPlayerBj().getPoint()){
+                        stat = false;
+                    }else{
+                        cout << "masukan salah" << endl;
+                    }
                }
                state.start();
                if(state.getWin()){
