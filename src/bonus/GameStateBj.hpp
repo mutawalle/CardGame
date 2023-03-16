@@ -65,13 +65,18 @@ class BlackJack {
        }      
        cout << endl;
        
-               cout << "bandar" << endl;
-        cout << "{" << "x "<< "xxx " << "x" << "}" << endl;
-       cout << bandar.getPlayerCard().getCard().at(1) << endl;
+       cout << "Dealer card:" << endl;
+       cout << " _____" << endl;
+       cout << "|??   |" << endl;
+       cout << "| / \\ |" << endl;
+       cout << "|  ?  |" << endl;
+       cout << "| \\ / |" << endl;
+       cout << "|_____|" << endl;
+       cout << bandar.getPlayerCard().getCard().at(1);
        cout << endl;
-               cout << "player" << endl;
+       cout << "Player card:" << endl;
        for(size_t i = 0 ; i < this->player2.getPlayerCard().getCard().size() ; i++){
-           cout << player2.getPlayerCard().getCard().at(i) << endl;
+           cout << player2.getPlayerCard().getCard().at(i);
        }
        cout << endl;
    }
@@ -109,17 +114,21 @@ class BlackJack {
        if(bandarVal > 21){
            win = true;
        }
-               cout << endl;
-               cout << "bandar" << endl;
-       for(size_t j = 0 ; j < this->bandar.getPlayerCard().getCard().size() ; j++){
-           cout << bandar.getPlayerCard().getCard().at(j) << endl;
-       }
-               cout << endl;
-               cout << "player" << endl;
+        cout << endl;
+       cout << "Dealer card:" << endl;
+       cout << " _____" << endl;
+       cout << "|??   |" << endl;
+       cout << "| / \\ |" << endl;
+       cout << "|  ?  |" << endl;
+       cout << "| \\ / |" << endl;
+       cout << "|_____|" << endl;
+       cout << bandar.getPlayerCard().getCard().at(1);
+       cout << endl;
+       cout << "Player card:" << endl;
        for(size_t i = 0 ; i < this->player2.getPlayerCard().getCard().size() ; i++){
-           cout << player2.getPlayerCard().getCard().at(i) << endl;
+           cout << player2.getPlayerCard().getCard().at(i);
        }
-               cout << endl;
+       cout << endl;
    }
 
 
@@ -129,13 +138,18 @@ class BlackJack {
        getCardPlayer();
        getCardPlayer();
        cout << endl;
-       cout << "bandar" << endl;
-       cout << "{" << "x "<< "xxx " << "x" << "}" << endl;
-       cout << bandar.getPlayerCard().getCard().at(1) << endl;
+       cout << "Dealer card:" << endl;
+       cout << " _____" << endl;
+       cout << "|??   |" << endl;
+       cout << "| / \\ |" << endl;
+       cout << "|  ?  |" << endl;
+       cout << "| \\ / |" << endl;
+       cout << "|_____|" << endl;
+       cout << bandar.getPlayerCard().getCard().at(1);
        cout << endl;
-       cout << "player" << endl;
+       cout << "Player card:" << endl;
        for(size_t i = 0 ; i < this->player2.getPlayerCard().getCard().size() ; i++){
-           cout << player2.getPlayerCard().getCard().at(i) << endl;
+           cout << player2.getPlayerCard().getCard().at(i);
        }
                cout << endl;
       
