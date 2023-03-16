@@ -75,10 +75,7 @@ class BlackJack {
        cout << bandar.getPlayerCard().getCard().at(1);
        cout << endl;
        cout << "Player card:" << endl;
-       for(size_t i = 0 ; i < this->player2.getPlayerCard().getCard().size() ; i++){
-           cout << player2.getPlayerCard().getCard().at(i);
-       }
-       cout << endl;
+       cout << this->player2.getPlayerCard();
    }
 
 
@@ -125,10 +122,8 @@ class BlackJack {
        cout << bandar.getPlayerCard().getCard().at(1);
        cout << endl;
        cout << "Player card:" << endl;
-       for(size_t i = 0 ; i < this->player2.getPlayerCard().getCard().size() ; i++){
-           cout << player2.getPlayerCard().getCard().at(i);
-       }
-       cout << endl;
+       cout << this->player2.getPlayerCard();
+
    }
 
 
@@ -145,13 +140,21 @@ class BlackJack {
        cout << "|  ?  |" << endl;
        cout << "| \\ / |" << endl;
        cout << "|_____|" << endl;
+       if (bandar.getPlayerCard().getCard().at(1).getColor() == "HIJAU" || bandar.getPlayerCard().getCard().at(1).getColor() == "Keriting") {
+            cout << "\033[32m";
+        } else if (bandar.getPlayerCard().getCard().at(1).getColor() == "BIRU" || bandar.getPlayerCard().getCard().at(1).getColor() == "Sekop") {
+            cout << "\033[34m";
+        } else if (bandar.getPlayerCard().getCard().at(1).getColor() == "MERAH" || bandar.getPlayerCard().getCard().at(1).getColor() == "Wajik") {
+            cout << "\033[31m";
+        } else if (bandar.getPlayerCard().getCard().at(1).getColor() == "YELLOW" || bandar.getPlayerCard().getCard().at(1).getColor() == "Hati") {
+            cout << "\033[33m";
+        }
        cout << bandar.getPlayerCard().getCard().at(1);
+       cout << "\033[0m";
        cout << endl;
        cout << "Player card:" << endl;
-       for(size_t i = 0 ; i < this->player2.getPlayerCard().getCard().size() ; i++){
-           cout << player2.getPlayerCard().getCard().at(i);
-       }
-               cout << endl;
+       cout << this->player2.getPlayerCard();
+
       
        while(this->status){
             double valP;
