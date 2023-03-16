@@ -148,9 +148,9 @@ class Command {
             cout << colorsCodeCommand["CYAN"] << "RONDE " << n << colorsCodeCommand["RESET"] << endl;
             cout << "Sekarang giliran " << this->gameState.players.at(order.at(this->gameState.turn)).getName() << endl;
             cout << "Ini kartu kamu" << endl;
-            this->gameState.players.at(order.at(this->gameState.turn)).getPlayerCard().printListCard();
+            cout << this->gameState.players.at(order.at(this->gameState.turn)).getPlayerCard();
             cout << "Ini kartu di meja" << endl;
-            this->gameState.tableCard.printListCard();
+            cout << this->gameState.tableCard;
             cout << "poin kamu: " << this->gameState.players.at(order.at(this->gameState.turn)).getPoint() << endl;
             cout << "poin game: " << this->gameState.point << endl;
             if(n >= 2){
@@ -422,19 +422,6 @@ class Command {
                 break;
             }
         }
-
-        void opening(){
-            string s;
-            cout << colorsCodeCommand["MAGENTA"] << " _    _  ____  __    ___  _____  __  __  ____" << endl; 
-            cout << "( \\/\\/ )( ___)(  )  / __)(  _  )(  \\/  )( ___)" << endl;
-            cout << " )    (  )__)  )(__( (__  )(_)(  )    (  )__) " << endl;
-            cout << "(__/\\__)(____)(____)\\___)(_____)(_/\\/\\_)(____)" << colorsCodeCommand["RESET"] << endl;
-            cout << "ketik apapun untuk memulai: ";
-            cin >> s;
-            system("cls");
-            system("clear");
-        }
-        
 };
 
 #endif

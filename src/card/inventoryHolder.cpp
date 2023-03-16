@@ -35,7 +35,7 @@ ostream& operator<<(ostream& os, const InventoryHolder& dc) {
                 cout << "\033[34m";
             } else if (dc.cardList.at(i).getColor() == "MERAH" || dc.cardList.at(i).getColor() == "Wajik") {
                 cout << "\033[31m";
-            } else if (dc.cardList.at(i).getColor() == "YELLOW" || dc.cardList.at(i).getColor() == "Hati") {
+            } else if (dc.cardList.at(i).getColor() == "KUNING" || dc.cardList.at(i).getColor() == "Hati") {
                 cout << "\033[33m";
             }
             cout << " _____ ";
@@ -52,7 +52,7 @@ ostream& operator<<(ostream& os, const InventoryHolder& dc) {
                 cout << "\033[34m";
             } else if (dc.cardList.at(i).getColor() == "MERAH" || dc.cardList.at(i).getColor() == "Wajik") {
                 cout << "\033[31m";
-            } else if (dc.cardList.at(i).getColor() == "YELLOW" || dc.cardList.at(i).getColor() == "Hati") {
+            } else if (dc.cardList.at(i).getColor() == "KUNING" || dc.cardList.at(i).getColor() == "Hati") {
                 cout << "\033[33m";
             }
             if (dc.cardList.at(i).getNumber() < 10) {
@@ -70,7 +70,7 @@ ostream& operator<<(ostream& os, const InventoryHolder& dc) {
                 cout << "\033[34m";
             } else if (dc.cardList.at(i).getColor() == "MERAH" || dc.cardList.at(i).getColor() == "Wajik") {
                 cout << "\033[31m";
-            } else if (dc.cardList.at(i).getColor() == "YELLOW" || dc.cardList.at(i).getColor() == "Hati") {
+            } else if (dc.cardList.at(i).getColor() == "KUNING" || dc.cardList.at(i).getColor() == "Hati") {
                 cout << "\033[33m";
             }
             cout << "| / \\ |";
@@ -87,7 +87,7 @@ ostream& operator<<(ostream& os, const InventoryHolder& dc) {
             } else if (dc.cardList.at(i).getColor() == "MERAH" || dc.cardList.at(i).getColor() == "Wajik") {
                 cout << "\033[31m";
                 colString = "M";
-            } else if (dc.cardList.at(i).getColor() == "YELLOW" || dc.cardList.at(i).getColor() == "Hati") {
+            } else if (dc.cardList.at(i).getColor() == "KUNING" || dc.cardList.at(i).getColor() == "Hati") {
                 cout << "\033[33m";
                 colString = "Y";
             }
@@ -106,7 +106,7 @@ ostream& operator<<(ostream& os, const InventoryHolder& dc) {
             } else if (dc.cardList.at(i).getColor() == "MERAH" || dc.cardList.at(i).getColor() == "Wajik") {
                 cout << "\033[31m";
                 colString = "M";
-            } else if (dc.cardList.at(i).getColor() == "YELLOW" || dc.cardList.at(i).getColor() == "Hati") {
+            } else if (dc.cardList.at(i).getColor() == "KUNING" || dc.cardList.at(i).getColor() == "Hati") {
                 cout << "\033[33m";
                 colString = "Y";
             }
@@ -125,7 +125,7 @@ ostream& operator<<(ostream& os, const InventoryHolder& dc) {
             } else if (dc.cardList.at(i).getColor() == "MERAH" || dc.cardList.at(i).getColor() == "Wajik") {
                 cout << "\033[31m";
                 colString = "M";
-            } else if (dc.cardList.at(i).getColor() == "YELLOW" || dc.cardList.at(i).getColor() == "Hati") {
+            } else if (dc.cardList.at(i).getColor() == "KUNING" || dc.cardList.at(i).getColor() == "Hati") {
                 cout << "\033[33m";
                 colString = "Y";
             }
