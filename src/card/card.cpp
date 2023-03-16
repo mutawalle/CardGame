@@ -50,7 +50,28 @@ string Card::getColor() const {
 }
 
 ostream& operator<<(ostream& os, const Card& obj) {
-    os << "{" << obj.getNumber() << " " << obj.getColor() << " " << obj.getValue() << "}";
+    string numString, colString;
+    numString = to_string(obj.getNumber());
+    if (obj.getNumber() < 10) {
+        numString += " ";
+    }
+
+    if (obj.getColor() == "HIJAU" || obj.getColor() == "Keriting") {
+        colString = "H";
+    } else if (obj.getColor() == "BIRU" || obj.getColor() == "Sekop") {
+        colString = "B";
+    } else if (obj.getColor() == "MERAH" || obj.getColor() == "Wajik") {
+        colString = "M";
+    } else if (obj.getColor() == "YELLOW" || obj.getColor() == "Hati") {
+        colString = "Y";
+    }
+    cout << " _____" << endl;
+    cout << "|" << numString << "   |" << endl;
+    cout << "| / \\ |" << endl;
+    cout << "|  " << colString << "  |" << endl;
+    cout << "| \\ / |" << endl;
+    cout << "|_____|" << endl;
+
     return os;
 }
 
