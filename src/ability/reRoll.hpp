@@ -17,20 +17,24 @@ public:
         cout << "Kamu mendapatkan 2 kartu baru yaitu:"<< endl;
         vector<Card> playerCard = this->gameState.players.at(this->gameState.turn).getPlayerCard().getCard();
         vector<Card> deckCard = this->gameState.deckCard.getCard();
-        playerCard.erase(playerCard.end());
         playerCard.erase(playerCard.begin());
-        int lenDC = this->gameState.deckCard.getCardListLength();
-        int randVal;
-        for(int i=lenDC;i>(lenDC-2);i--){
-            randVal = rand() % i;
-            playerCard.insert(playerCard.end(), deckCard.at(randVal));
-            deckCard.erase(deckCard.begin() + randVal);
-        }
+        playerCard.erase(playerCard.begin());
+        // int lenDC = this->gameState.deckCard.getCardListLength();
+        // int randVal;
+        playerCard.push_back(deckCard.at(0));
+        deckCard.erase(deckCard.begin());
+        playerCard.push_back(deckCard.at(0));
+        deckCard.erase(deckCard.begin());
+        // for(int i=lenDC;i>(lenDC-2);i--){
+        //     randVal = rand() % i;
+        //     playerCard.insert(playerCard.end(), deckCard.at(randVal));
+        //     deckCard.erase(deckCard.begin() + randVal);
+        // }
         this->gameState.deckCard = deckCard;
-        this->gameState.players.at(this->gameState.turn).setPlayerCard(playerCard);
+        this->gameState.players.at(this->gameState.order.at(this->gameState.turn)).setPlayerCard(playerCard);
+        cout << this->gameState.players.at(this->gameState.order.at(this->gameState.turn)).getPlayerCard();
         this->gameState.turn++;
         this->gameState.turn %= 7;
-        cout << this->gameState.players.at(this->gameState.order.at(this->gameState.turn)).getPlayerCard();
     }
 };
 
