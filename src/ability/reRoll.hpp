@@ -30,8 +30,7 @@ public:
         this->gameState.players.at(this->gameState.turn).setPlayerCard(playerCard);
         this->gameState.turn++;
         this->gameState.turn %= 7;
-        cout << this->gameState.players.at(this->gameState.turn).getPlayerCard().getCard().at(0)<< endl;
-        cout << this->gameState.players.at(this->gameState.turn).getPlayerCard().getCard().at(1)<< endl;
+        cout << this->gameState.players.at(this->gameState.order.at(this->gameState.turn)).getPlayerCard();
     }
 };
 

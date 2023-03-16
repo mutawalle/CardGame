@@ -176,6 +176,9 @@ class Command {
                     commandValidation();
                     abillityValidation();
                     valid = true;
+                    string s;
+                    cout << "Ketik apapun untuk lanjut ke pemain berikutnya: ";
+                    cin >> s;
                     system("cls");
                     system("clear");
                 }
@@ -328,7 +331,6 @@ class Command {
                         cout << "input tidak valid!! ulangi "<<endl;
                         cin >> noKartu2;
                     }
-                    cout << index1 << " "<< index2 << " "<< noKartu1-1 << " "<< noKartu2-1<<endl;
                     SwapCard swapCard(this->gameState, index1, index2, noKartu1-1, noKartu2-1);
                     swapCard.DoAction();
                     this->gameState = swapCard.GetGameState();

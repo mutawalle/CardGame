@@ -36,6 +36,7 @@ public:
 
         this->gameState.turn++;
         this->gameState.turn %= 7;
+        cout << "Sukses menukar salah satu kartu milik " << players.at(firstPlayer).getName() << " dengan salah satu kartu milik " << players.at(secondPlayer).getName() << endl;
     }
 };
 

@@ -14,11 +14,9 @@ public:
     }
     void DoAction() {
         this->gameState.players.at(this->targetPlayer).setAbilityLess(true);
-        // string ability = gameState.players.at(this->targetPlayer).getAbility();
-        // ability = ability + "null";
-        // this->gameState.players.at(this->targetPlayer).setAbility("");
         this->gameState.turn++;
         this->gameState.turn %= 7;
+        cout << "kartu ability milik" << this->gameState.players.at(this->targetPlayer).getName() << " telah dimatikan" << endl;
     }
 };
 

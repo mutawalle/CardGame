@@ -22,6 +22,8 @@ public:
         PlayerCard cl2 = this->gameState.players.at(this->target).getPlayerCard();
         this->gameState.players.at(this->target).setPlayerCard(cl1);
         this->gameState.players.at(this->gameState.order.at(this->gameState.turn)).setPlayerCard(cl2);
+        cout << "Kartu telah ditukar, kamu mendapat kartu: " << endl;
+        cout << this->gameState.players.at(this->gameState.order.at(this->gameState.turn)).getPlayerCard();
         this->gameState.turn++;
         this->gameState.turn %= 7;
     }
