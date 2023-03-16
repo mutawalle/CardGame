@@ -103,5 +103,6 @@
         "shared_mutex": "cpp",
         "syncstream": "cpp",
         "typeindex": "cpp"
-    }
+    },
+    "cmake.configureOnOpen": true
 }
