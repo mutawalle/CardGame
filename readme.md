@@ -80,48 +80,50 @@
 
 
 ## Screenshots
-![Example screenshot](./img/screenshot.png)
-<!-- If you have screenshots you'd like to share, include them here. -->
+[![image](https://www.linkpicture.com/q/messageImage_1678976908140.jpg)](https://www.linkpicture.com/view.php?img=LPic6413291a9f7861774130743)
+[![image](https://www.linkpicture.com/q/messageImage_1678976933756.jpg)](https://www.linkpicture.com/view.php?img=LPic6413291a9f7861774130743)
+[![image](https://www.linkpicture.com/q/messageImage_1678976957220.jpg)](https://www.linkpicture.com/view.php?img=LPic6413291a9f7861774130743)
+
 
 
 ## Setup
-What are the project requirements/dependencies? Where are they listed? A requirements.txt or a Pipfile.lock file perhaps? Where is it located?
+Untuk memainkan permainan, dibutuhkan g++, make, dan sistem operasi Linux. Untuk menggunakan program, Anda harus melakukan proses kompilasi terhadap program tersebut. Langkah-langkahnya adalah dengan men-download atau menyalin repository, dan memastikan bahwa Anda menggunakan sistem operasi Linux (atau WSL) yang sudah terinstall g++ dan make.
 
-Proceed to describe how to install / setup one's local environment / get started with the project.
+Setelah itu gunakan command `make clean` untuk membersihkan folder bin dan command `make` untuk meng-compile program
 
 
 ## Usage
-How does one go about using it?
-Provide various use cases and code examples here.
-
-`write-your-code-here`
+Untuk menggunakan program yang telah di-_compile_:
+- Gunakan salah satu _command_
+```
+./main
+./main.exe
+```
+- Program juga dapat menerima input file
 
 
 ## Project Status
-Project is: _in progress_ / _complete_ / _no longer being worked on_. If you are no longer working on it, provide reasons why.
+Project ini selesai 
 
 
 ## Room for Improvement
-Include areas you believe need improvement / could be improved. Also add TODOs for future development.
-
-Room for improvement:
-- Improvement to be done 1
-- Improvement to be done 2
-
-To do:
-- Feature to be added 1
-- Feature to be added 2
+- Program mengunakan Command line Interface sehingga dapat ditingkatkan lagi dengan menggunakan GUI
+- Mungkin terdapat kesalahan penggunaan konsep OOP sehingga dapat diperiksa lagi
+- Terdapat beberapa kode yang redundant sehingga dapat diperbaiki dan direfactor
 
 
 ## Acknowledgements
-Give credit here.
-- This project was inspired by...
-- This project was based on [this tutorial](https://www.example.com).
-- Many thanks to...
+- Terima kasih kepada seluruh dosen pengajar mata kuliah IF2210 dan asisten lab programming
+- Projek ini dikerjakan untuk memenuhi tugas besar mata kuliah IF2210 Pemrograman Berorientasi Objek
 
 
 ## Contact
-Created by [@flynerdpl](https://www.flynerd.pl/) - feel free to contact me!
+Created by:
+- [@fajarmhrwn](https://github.com/fajarmhrwn)
+- [@vierifirdaus](https://github.com/vierifirdaus)
+- [@zakia215](https://github.com/zakia215)
+- [@mutawalle](https://github.com/mutawalle)
+- [@Ulung32](https://github.com/Ulung32)
 
 
 <!-- Optional -->
