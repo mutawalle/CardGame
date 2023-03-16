@@ -1,10 +1,10 @@
 #include <iostream>
-#include "game/game.hpp"
+#include "bonus/GameBj.hpp"
 
 using namespace std;
 
 int main(){
-    Game game;
-    game.start();
-    string x;
+    GameBJ game;
+    game.startGame();
+    
 }
